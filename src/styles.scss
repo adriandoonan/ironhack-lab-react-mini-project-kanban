@@ -1,2 +1,40 @@
-@use "../node_modules/@picocss/pico/scss/pico.scss";
 
+@use "../node_modules/@picocss/pico/scss/pico.scss" ;
+
+
+#root {
+    display: flex;
+    flex-direction: column;
+
+}
+
+nav {
+    padding: 0 2rem;
+    background-color: blue;
+    & ul {
+        color: white;
+    }
+}
+
+main {
+    // min-height: 87vh;
+}
+
+footer {
+    text-align: center;
+    margin-top: auto;
+    background-color: blue;
+    padding: 0.5rem;
+    justify-self: flex-end;
+    margin-top: auto;
+    & a {
+        padding: 0.5rem;
+        text-decoration: none;
+        color: white;
+
+        & svg {
+            margin: 0.25rem;
+            color: white;
+        }
+    }
+}
