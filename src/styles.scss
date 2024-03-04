@@ -3,36 +3,66 @@
     $semantic-root-element: "#root"
 );
 
+body {
+    min-height: 100vh;
+}
 
 #root {
     display: flex;
     flex-direction: column;
+    min-height: 100%;
 
 }
 
-nav {
-    padding: 0 2rem;
-    background-color: blue;
-    & ul {
-        color: white;
+
+
+header {
+    padding-block: unset !important;
+    max-height: 4rem;
+    > nav {
+        padding: 0 2rem;
+        background-color: rgba(87, 119, 59, 0.718);
+        > ul {
+            > li {
+                color: white;
+                padding: 0.5rem;
+                
+                img.logo-image {
+                    height:40px;
+                    padding: 0;
+                }
+            }
+        }
     }
 }
 
+
 main {
-     height: 100%;
+     min-height: 100%;
+     display: flex;
+     flex-direction: row;
+     justify-content: flex-start;
+     padding-block: unset !important;
+}
+
+aside {
+    background-color: fuchsia;
+    > nav {
+        padding: 0 2rem ;
+    }
 }
 
 footer {
     text-align: center;
     background-color: blue;
-    padding: 0.25rem;
-    & a {
-        padding: 0.25rem;
+    margin-top: auto;
+    > a {
         text-decoration: none;
         color: white;
 
-        & svg {
-            margin: 0.25rem;
+        > svg {
+            margin: 0 0.5rem;
+            padding-bottom: 2px;
             color: white;
         }
     }
