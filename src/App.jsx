@@ -1,4 +1,5 @@
 import Footer from "./Components/Footer";
+import Sidebar from "./Components/Sidebar";
 
 function App() {
 	return (
@@ -12,6 +13,7 @@ function App() {
 					<li>menu 2</li>
 				</ul>
 			</nav>
+			<Sidebar />
 			<main>main thing</main>
 			<Footer
 				githubLink="https://github.com/adriandoonan/ironhack-lab-react-mini-project-kanban"
