@@ -21,6 +21,7 @@ const TodoItem = ({
 	priority,
 	createdDate,
 	dueDate,
+	deleteTodo,
 }) => {
 	const priorityIcons = {
 		High: { icon: caretUp, color: "red" },
@@ -48,6 +49,7 @@ const TodoItem = ({
 			<footer style={{ textAlign: "left" }}>
 				<span style={{ display: "block" }}>Created: {createdDate}</span>
 				<span style={{ display: "block" }}>Assigned to: {assignee}</span>
+				<button onClick={() => deleteTodo(id)}>Delete</button>
 			</footer>
 		</article>
 	);

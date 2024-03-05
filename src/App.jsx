@@ -24,9 +24,7 @@ function App() {
 				<Sidebar />
 				<section>
 					<ListOfTodos todos={testTodos} />
-					<TodoItemForm />
-					<hr />
-					<TodoItemFormReducer />
+					{/* <TodoItemForm /> */}
 				</section>
 			</main>
 

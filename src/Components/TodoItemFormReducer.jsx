@@ -1,23 +1,5 @@
 import { useReducer, useState } from "react";
 
-function reducer(state, action) {
-	switch (action.type) {
-		case "form-submit": {
-			action.payload.preventDefault();
-			console.log("got a form submit", action.payload);
-			const formData = new FormData(action.payload.target.form);
-			const formula = formData.get("title");
-
-			console.log(formula);
-
-			return { ...state, title: formData.get("title") };
-		}
-		default: {
-			console.log("state", state);
-			console.log("action", action);
-		}
-	}
-}
 const formStyle = {
 	padding: "1rem 2rem",
 };
@@ -35,17 +17,54 @@ const progressStates = ["To Do", "In Progress", "Done"];
 const priorities = ["Low", "Medium", "High"];
 
 const TodoItemFormReducer = () => {
-	const [title, setTitle] = useState("");
-	const [state, dispatch] = useReducer(reducer, {
+	const addNewTodo = (state, action) => {
+		switch (action.type) {
+			case "form-submit": {
+				action.payload.preventDefault();
+				console.log("got a form submit", action.payload);
+				const formData = new FormData(action.payload.target.form);
+
+				const vals = {};
+				for (const key of formData.keys()) {
+					vals[key] = formData.get(key);
+				}
+				const formatDate = () => {
+					const dateNow = new Date();
+					return `${dateNow.getFullYear()}-${(dateNow.getMonth() + 1)
+						.toString()
+						.padStart(2, "0")}-${dateNow
+						.getDate()
+						.toString()
+						.padStart(2, "0")}`;
+				};
+				console.log(vals);
+				//setTodoItems([...todoItems, { ...state, ...vals }]);
+				return {
+					...state,
+					timestamp: new Date(),
+					createdDate: formatDate(),
+					...vals,
+				};
+			}
+			default: {
+				console.log("state", state);
+				console.log("action", action);
+			}
+		}
+	};
+
+	const [state, dispatch] = useReducer(addNewTodo, {
 		id: crypto.randomUUID(),
 		title: "",
 		description: "",
 		assignee: "",
 		status: "To Do",
 		priority: "Low",
-		createdDate: "",
 		dueDate: "",
+		createdDate: "",
 	});
+
+	console.log(reducer);
 	return (
 		<form style={formStyle}>
 			<label htmlFor="todo-item-title">Title</label>
@@ -55,7 +74,7 @@ const TodoItemFormReducer = () => {
 				type="text"
 				placeholder="Task title..."
 				// value={state.title}
-				onChange={(e) => setTitle(e.target.value)}
+				//onChange={(e) => setTitle(e.target.value)}
 			/>
 
 			<label htmlFor="todo-item-description">Description</label>
@@ -68,7 +87,7 @@ const TodoItemFormReducer = () => {
 
 			<label htmlFor="todo-item-due-date">Due date</label>
 			<span id="date-format">(DD-MM-YYYY):</span>
-			<input id="todo-item-due-date" name="date" type="date" />
+			<input id="todo-item-due-date" name="dueDate" type="date" />
 
 			<label htmlFor="todo-item-priority">Priority</label>
 			<select
