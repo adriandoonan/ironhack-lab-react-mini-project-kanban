@@ -8,17 +8,19 @@ const titleStyle = {
 	justifyContent: "space-between",
 };
 
-const TodoItem = ({ details }) => {
-	const {
-		id,
-		title,
-		description,
-		assignee,
-		status,
-		priority,
-		createdDate,
-		dueDate,
-	} = details;
+const TodoItem = ({
+	id,
+	title,
+	description,
+	assignee,
+	status,
+	priority,
+	createdDate,
+	dueDate,
+}) => {
+	// const {
+
+	// } = details;
 
 	return (
 		<article key={id} className="todo-item">

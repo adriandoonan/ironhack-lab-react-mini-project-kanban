@@ -52,6 +52,17 @@ aside {
     }
 }
 
+.list-of-todos {
+    background-color: lightslategray;
+    padding: 1rem;
+}
+
+.todo-item-form-button-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 10rem;
+}
+
 footer {
     text-align: center;
     background-color: blue;

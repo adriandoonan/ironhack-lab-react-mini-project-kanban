@@ -2,9 +2,9 @@ import TodoItem from "./TodoItem";
 
 const ListOfTodos = ({ todos }) => {
 	return (
-		<section>
+		<section className="list-of-todos">
 			{todos.map((todoItem) => (
-				<TodoItem details={todoItem} key={todoItem.id} />
+				<TodoItem {...todoItem} key={todoItem.id} />
 			))}
 		</section>
 	);
