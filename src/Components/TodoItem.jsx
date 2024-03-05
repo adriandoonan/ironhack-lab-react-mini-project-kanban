@@ -1,3 +1,7 @@
+import caretUp from "../assets/caret-up.svg";
+import caretDown from "../assets/caret-down.svg";
+import caretLeft from "../assets/caret-left.svg";
+
 const columnStyle = {
 	display: "flex",
 	flexDirection: "column",
@@ -18,9 +22,11 @@ const TodoItem = ({
 	createdDate,
 	dueDate,
 }) => {
-	// const {
-
-	// } = details;
+	const priorityIcons = {
+		High: { icon: caretUp, color: "red" },
+		Medium: { icon: caretLeft, color: "orange" },
+		Low: { icon: caretDown, color: "green" },
+	};
 
 	return (
 		<article key={id} className="todo-item">
@@ -28,7 +34,11 @@ const TodoItem = ({
 				<span>Status: {status}</span>
 				<div style={titleStyle}>
 					<strong>{title || "This is an item"}</strong>
-					<span style={{ marginLeft: "auto" }}>{priority}</span>
+					<img
+						className={`svg-icon ${priorityIcons[priority].color}`}
+						src={priorityIcons[priority].icon}
+						alt={`${priority} task`}
+					/>
 				</div>
 			</header>
 			<p>
