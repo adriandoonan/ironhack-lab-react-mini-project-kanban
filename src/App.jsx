@@ -1,12 +1,15 @@
 import Footer from "./Components/Footer";
 import Sidebar from "./Components/Sidebar";
-import ListOfTodos from "./Components/ListOfTodos";
+
 import Navbar from "./Components/Navbar";
 import coolLogo from "./assets/cool-logo.png";
 
-import TodoItemForm from "./Components/TodoItemForm";
-import TodoItemFormReducer from "./Components/TodoItemFormReducer";
 import testTodos from "./data.json";
+import { Route, Routes } from "react-router-dom";
+import ListOfTodos from "./Components/ListOfTodos";
+import HomePage from "./Pages/HomePage";
+import About from "./Pages/About";
+import NotFound from "./Pages/NotFound";
 
 function App() {
 	return (
@@ -22,10 +25,24 @@ function App() {
 
 			<main>
 				<Sidebar />
-				<section>
-					<ListOfTodos todos={testTodos} />
+
+        <section>
+
+        <Routes>
+
+          <Route path="/" element={<HomePage />} />
+
+					<Route path="/todos" element={<ListOfTodos todos={testTodos}/>} />
+
+          <Route path="/about" element={<About />} />
+
+          <Route path="*" element={<NotFound />} />
 					{/* <TodoItemForm /> */}
-				</section>
+        </Routes>
+
+        </section>
+
+
 			</main>
 
 			<Footer
