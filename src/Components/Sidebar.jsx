@@ -1,14 +1,16 @@
+import { NavLink } from "react-router-dom";
+
 const Sidebar = () => {
 	return (
 		<aside data-theme="dark">
 			<nav>
 				<ul>
-					<li>
-						<a href="#">Home</a>
-					</li>
-					<li>
-						<a href="#">About</a>
-					</li>
+					<NavLink to="/">
+						<li>Home </li>
+					</NavLink>
+					<NavLink to="/about">
+						<li>About</li>
+					</NavLink>
 				</ul>
 			</nav>
 		</aside>

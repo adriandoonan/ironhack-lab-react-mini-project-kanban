@@ -1,24 +1,26 @@
+import { Link, NavLink } from "react-router-dom";
+
 const Navbar = ({ logoImage, menuItems }) => {
 	return (
 		<header>
 			<nav>
 				<ul>
-					<li>
-						<a href="#">
+					<Link to="/">
+						<li>
 							<img
 								className="logo-image"
 								src={logoImage}
 								alt="what a cool company"
 							/>
 							Cool jerks
-						</a>
-					</li>
+						</li>
+					</Link>
 				</ul>
 				<ul>
 					{menuItems.map((item) => (
-						<li key={item.name.replaceAll(" ", "-")}>
-							<a href={item.link}>{item.name}</a>
-						</li>
+						<NavLink key={item.name.replaceAll(" ", "-")} to={item.link}>
+							<li>{item.name}</li>
+						</NavLink>
 					))}
 				</ul>
 			</nav>
