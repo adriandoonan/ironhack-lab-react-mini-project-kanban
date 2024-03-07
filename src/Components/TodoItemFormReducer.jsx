@@ -28,6 +28,7 @@ const TodoItemFormReducer = ({ dispatch, state }) => {
 					name="title"
 					type="text"
 					placeholder="Task title..."
+					required
 				/>
 
 				<label htmlFor="todo-item-description">Description</label>
@@ -48,6 +49,7 @@ const TodoItemFormReducer = ({ dispatch, state }) => {
 					name="priority"
 					type="select"
 					defaultValue={""}
+					required
 				>
 					<option disabled value={""}>
 						Select priority
@@ -84,7 +86,6 @@ const TodoItemFormReducer = ({ dispatch, state }) => {
 				<div className="todo-item-form-button-container">
 					<button
 						type="submit"
-						method="post"
 						onClick={(e) => {
 							dispatch({ type: "form-submit", payload: e });
 						}}

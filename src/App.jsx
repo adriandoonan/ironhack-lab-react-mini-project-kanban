@@ -26,7 +26,7 @@ function App() {
 			<main>
 				<Sidebar />
 
-				<section>
+				<section id="main-content">
 					<Routes>
 						<Route path="/" element={<HomePage />} />
 

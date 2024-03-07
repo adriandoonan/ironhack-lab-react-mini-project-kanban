@@ -22,11 +22,11 @@ const ListOfTodos = ({ todos }) => {
 			case "form-submit": {
 				const newTodoModal = document.getElementById("new-todo-dialog");
 				const newTodoForm = document.getElementById("new-todo-form");
-				action.payload.preventDefault();
+				//action.payload.preventDefault();
 				console.log("got a form submit", action.payload);
 				console.log(
 					"parent",
-					action.payload.target.parentElement.parentElement.parentElement.close(),
+					//action.payload.target.parentElement.parentElement.parentElement.close(),
 				);
 				const formData = new FormData(action.payload.target.form);
 
@@ -56,8 +56,8 @@ const ListOfTodos = ({ todos }) => {
 				console.log(newTodoItem);
 				newTodo = newTodoItem;
 				//return newTodoItem;
-				newTodoModal.close();
-				newTodoForm.reset();
+				//newTodoModal.close();
+				//newTodoForm.reset();
 				break;
 			}
 			default: {
@@ -76,13 +76,24 @@ const ListOfTodos = ({ todos }) => {
 	};
 
 	return (
-		<section className="list-of-todos">
-			{todoItems.map((todoItem) => (
-				<TodoItem {...todoItem} key={todoItem.id} deleteTodo={deleteTodo} />
-			))}
+		<>
+			<section className="list-of-todos grid">
+				<section className="kanban-track" id="todos-todo">
+					<p>to d</p>
+					{todoItems.map((todoItem) => (
+						<TodoItem {...todoItem} key={todoItem.id} deleteTodo={deleteTodo} />
+					))}
+				</section>
+				<section className="kanban-track" id="todos-in-progress">
+					<p>in p</p>
+				</section>
+				<section className="kanban-track" id="todos-done">
+					<p>d</p>
+				</section>
+			</section>
 			<hr />
 			<TodoItemFormReducer dispatch={dispatch} state={state} />
-		</section>
+		</>
 	);
 };
 

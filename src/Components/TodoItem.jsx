@@ -30,7 +30,7 @@ const TodoItem = ({
 	};
 
 	return (
-		<article key={id} className="todo-item">
+		<article key={id} className="todo-item" draggable="true">
 			<header style={columnStyle}>
 				<span>Status: {status}</span>
 				<div style={titleStyle}>

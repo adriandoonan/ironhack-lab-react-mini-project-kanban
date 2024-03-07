@@ -45,14 +45,28 @@ main {
 
 aside {
   background-color: fuchsia;
-  > nav {
+  > nav#sidebar-nav {
     padding: 0 2rem;
+    position: sticky;
+    top: 60px;
   }
 }
 
+#main-content {
+    flex-grow: 1;
+
+}
+
 .list-of-todos {
-  background-color: lightslategray;
+  background-color: white;
   padding: 1rem;
+}
+
+.kanban-track {
+    margin:0.1rem;
+    padding: 2px;
+    background-color: lightgray;
+    
 }
 
 .todo-item-form-button-container {

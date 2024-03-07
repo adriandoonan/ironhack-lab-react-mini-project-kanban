@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 const Sidebar = () => {
 	return (
 		<aside data-theme="dark">
-			<nav>
+			<nav id="sidebar-nav">
 				<ul>
 					<NavLink to="/">
 						<li>Home </li>
