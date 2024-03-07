@@ -49,7 +49,9 @@ const TodoItem = ({
 			<footer style={{ textAlign: "left" }}>
 				<span style={{ display: "block" }}>Created: {createdDate}</span>
 				<span style={{ display: "block" }}>Assigned to: {assignee}</span>
-				<button onClick={() => deleteTodo(id)}>Delete</button>
+				<button type="button" onClick={() => deleteTodo(id)}>
+					Delete
+				</button>
 			</footer>
 		</article>
 	);

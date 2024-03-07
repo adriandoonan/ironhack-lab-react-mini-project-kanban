@@ -1,18 +1,17 @@
 import { NavLink } from "react-router-dom";
-const baseUrl = "/ironhack-lab-react-mini-project-kanban/";
 
 const Sidebar = () => {
 	return (
 		<aside data-theme="dark">
 			<nav>
 				<ul>
-					<NavLink to={`${baseUrl}`}>
+					<NavLink to="/">
 						<li>Home </li>
 					</NavLink>
-					<NavLink to={`${baseUrl}about`}>
+					<NavLink to="/about">
 						<li>About</li>
 					</NavLink>
-					<NavLink to={`${baseUrl}todos`}>
+					<NavLink to="todos">
 						<li>Todos</li>
 					</NavLink>
 					<button
