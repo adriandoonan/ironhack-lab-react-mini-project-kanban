@@ -11,6 +11,9 @@ const Sidebar = () => {
 					<NavLink to="/about">
 						<li>About</li>
 					</NavLink>
+					<NavLink to="/todos">
+						<li>Todos</li>
+					</NavLink>
 					<button
 						type="button"
 						onClick={() => {
