@@ -10,6 +10,7 @@ import ListOfTodos from "./Components/ListOfTodos";
 import HomePage from "./Pages/HomePage";
 import About from "./Pages/About";
 import NotFound from "./Pages/NotFound";
+import Todo from "./Pages/Todo";
 
 function App() {
 	return (
@@ -31,6 +32,8 @@ function App() {
 						<Route path="/" element={<HomePage />} />
 
 						<Route path="/todos" element={<ListOfTodos todos={testTodos} />} />
+
+						<Route path="/todos/:todoId" element={<Todo todos={testTodos} />} />
 
 						<Route path="/about" element={<About />} />
 

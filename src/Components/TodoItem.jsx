@@ -22,6 +22,7 @@ const TodoItem = ({
 	createdDate,
 	dueDate,
 	deleteTodo,
+	editTodo,
 }) => {
 	const priorityIcons = {
 		High: { icon: caretUp, color: "red" },
@@ -36,7 +37,7 @@ const TodoItem = ({
 				<div style={titleStyle}>
 					<strong>{title || "This is an item"}</strong>
 					<img
-						className={`svg-icon ${priorityIcons[priority].color}`}
+						className={`svg-icon ${priorityIcons[priority]?.color}`}
 						src={priorityIcons[priority].icon}
 						alt={`${priority} task`}
 					/>
@@ -49,6 +50,9 @@ const TodoItem = ({
 			<footer style={{ textAlign: "left" }}>
 				<span style={{ display: "block" }}>Created: {createdDate}</span>
 				<span style={{ display: "block" }}>Assigned to: {assignee}</span>
+				<button type="button" onClick={() => editTodo(id)}>
+					Edit
+				</button>
 				<button type="button" onClick={() => deleteTodo(id)}>
 					Delete
 				</button>

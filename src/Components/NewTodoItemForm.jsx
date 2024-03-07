@@ -1,4 +1,4 @@
-import { useReducer, useState } from "react";
+import { useState } from "react";
 
 const formStyle = {
 	padding: "1rem 2rem",
@@ -16,7 +16,38 @@ const progressStates = ["To Do", "In Progress", "Done"];
 
 const priorities = ["Low", "Medium", "High"];
 
-const TodoItemFormReducer = ({ dispatch, state }) => {
+const getFormattedDate = () => {
+	const dateNow = new Date();
+	return `${dateNow.getFullYear()}-${(dateNow.getMonth() + 1)
+		.toString()
+		.padStart(2, "0")}-${dateNow.getDate().toString().padStart(2, "0")}`;
+};
+
+// example item
+// {
+// 	"id": "1",
+// 	"title": "Design Landing Page",
+// 	"description": "Create a visually appealing landing page for the website.",
+// 	"assignee": "Mary Davis",
+// 	"status": "To Do",
+// 	"priority": "High",
+// 	"createdDate": "2023-09-15",
+// 	"dueDate": "2023-09-30"
+// }
+const initialTodoState = {
+	id: crypto.randomUUID(),
+	title: "",
+	description: "",
+	assignee: "",
+	status: "To Do",
+	priority: "",
+	createdDate: getFormattedDate(),
+	createdTimestamp: new Date(),
+	dueDate: getFormattedDate(),
+};
+
+const NewTodoItemForm = ({ handleSubmit }) => {
+	const [newTodo, setNewTodo] = useState(initialTodoState);
 	//console.log(dispatch);
 
 	return (
@@ -25,8 +56,9 @@ const TodoItemFormReducer = ({ dispatch, state }) => {
 				id="new-todo-form"
 				method="dialog"
 				style={formStyle}
-				onSubmit={(e) => {
-					dispatch({ type: "form-submit", payload: e });
+				onSubmit={(event) => {
+					handleSubmit({ event, newTodo });
+					setNewTodo(initialTodoState);
 				}}
 			>
 				<label htmlFor="todo-item-title">Title</label>
@@ -36,8 +68,8 @@ const TodoItemFormReducer = ({ dispatch, state }) => {
 					type="text"
 					placeholder="Task title..."
 					required
-					value={state.title}
-					onChange={(e) => dispatch({ type: "change-title", payload: e })}
+					value={newTodo.title}
+					onChange={(e) => setNewTodo({ ...newTodo, title: e.target.value })}
 				/>
 
 				<label htmlFor="todo-item-description">Description</label>
@@ -46,21 +78,32 @@ const TodoItemFormReducer = ({ dispatch, state }) => {
 					name="description"
 					type="textarea"
 					placeholder="Task description..."
+					value={newTodo.description}
+					onChange={(e) =>
+						setNewTodo({ ...newTodo, description: e.target.value })
+					}
 				/>
 
 				<label htmlFor="todo-item-due-date">Due date</label>
 				<span id="date-format">(DD-MM-YYYY):</span>
-				<input id="todo-item-due-date" name="dueDate" type="date" />
+				<input
+					id="todo-item-due-date"
+					name="dueDate"
+					type="date"
+					value={newTodo.dueDate}
+					onChange={(e) => setNewTodo({ ...newTodo, dueDate: e.target.value })}
+				/>
 
 				<label htmlFor="todo-item-priority">Priority</label>
 				<select
 					id="todo-item-priority"
 					name="priority"
 					type="select"
-					defaultValue={""}
 					required
+					defaultValue={newTodo.priority}
+					onChange={(e) => setNewTodo({ ...newTodo, priority: e.target.value })}
 				>
-					<option disabled value={""}>
+					<option disabled value="">
 						Select priority
 					</option>
 					{priorities.map((element) => {
@@ -78,9 +121,10 @@ const TodoItemFormReducer = ({ dispatch, state }) => {
 					id="todo-item-assignee"
 					name="assignee"
 					type="text"
-					defaultValue={"placeholder"}
+					value={newTodo.assignee}
+					onChange={(e) => setNewTodo({ ...newTodo, assignee: e.target.value })}
 				>
-					<option value={"placeholder"} disabled>
+					<option value="" disabled>
 						Assign task
 					</option>
 					{teamMembers.map((element) => {
@@ -98,8 +142,11 @@ const TodoItemFormReducer = ({ dispatch, state }) => {
 					</button>
 					<button
 						type="reset"
-						style={{ backgroundColor: "red", borderColor: "red" }}
-						//onClick={() => document.getElementById("new-todo-dialog").close()}
+						//style={{ backgroundColor: "red", borderColor: "red" }}
+						onClick={() => {
+							setNewTodo(initialTodoState);
+							document.getElementById("new-todo-dialog").close();
+						}}
 					>
 						Cancel
 					</button>
@@ -108,4 +155,4 @@ const TodoItemFormReducer = ({ dispatch, state }) => {
 		</dialog>
 	);
 };
-export default TodoItemFormReducer;
+export default NewTodoItemForm;

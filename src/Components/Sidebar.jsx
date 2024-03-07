@@ -1,6 +1,8 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 
 const Sidebar = () => {
+	const currentPage = useLocation();
+	console.log(currentPage.pathname);
 	return (
 		<aside data-theme="dark">
 			<nav id="sidebar-nav">
@@ -11,17 +13,19 @@ const Sidebar = () => {
 					<NavLink to="/about">
 						<li>About</li>
 					</NavLink>
-					<NavLink to="todos">
+					<NavLink to="/todos">
 						<li>Todos</li>
 					</NavLink>
-					<button
-						type="button"
-						onClick={() => {
-							document.getElementById("new-todo-dialog").show();
-						}}
-					>
-						New Todo
-					</button>
+					{currentPage.pathname === "/todos" && (
+						<button
+							type="button"
+							onClick={() => {
+								document.getElementById("new-todo-dialog").show();
+							}}
+						>
+							New Todo
+						</button>
+					)}
 				</ul>
 			</nav>
 		</aside>
