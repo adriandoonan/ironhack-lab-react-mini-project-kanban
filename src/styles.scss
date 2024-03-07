@@ -1,0 +1,90 @@
+@use "@picocss/pico/scss/pico" with (
+  $semantic-root-element: "#root"
+);
+
+body {
+  min-height: 100vh;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+header#main-header {
+  padding-block: unset !important;
+  max-height: 4rem;
+  position: sticky;
+  top: 0;
+  
+  > nav {
+    padding: 0 2rem;
+    background-color: rgba(87, 119, 59, 0.9);
+    > ul {
+      > a li {
+        color: white;
+        padding: 0.5rem;
+
+        img.logo-image {
+          height: 40px;
+          padding: 0;
+        }
+      }
+    }
+  }
+}
+
+main {
+  min-height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  padding-block: unset !important;
+}
+
+aside {
+  background-color: fuchsia;
+  > nav {
+    padding: 0 2rem;
+  }
+}
+
+.list-of-todos {
+  background-color: lightslategray;
+  padding: 1rem;
+}
+
+.todo-item-form-button-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 10rem;
+}
+
+footer {
+  text-align: center;
+  background-color: blue;
+  margin-top: auto;
+  > a {
+    text-decoration: none;
+    color: white;
+
+    > svg {
+      margin: 0 0.5rem;
+      padding-bottom: 2px;
+      color: white;
+    }
+  }
+}
+
+.svg-icon.red {
+  filter: hue-rotate(180);
+}
+
+.svg-icon.green {
+  filter: hue-rotate(180);
+}
+
+.svg-icon.orange {
+  filter: hue-rotate(180);
+}
