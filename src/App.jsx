@@ -10,8 +10,7 @@ import ListOfTodos from "./Components/ListOfTodos";
 import HomePage from "./Pages/HomePage";
 import About from "./Pages/About";
 import NotFound from "./Pages/NotFound";
-
-const baseUrl = "/ironhack-lab-react-mini-project-kanban/";
+import Todo from "./Pages/Todo";
 
 function App() {
 	return (
@@ -28,18 +27,17 @@ function App() {
 			<main>
 				<Sidebar />
 
-				<section>
+				<section id="main-content">
 					<Routes>
-						<Route path={`${baseUrl}*`} element={<HomePage />} />
+						<Route path="/" element={<HomePage />} />
 
-						<Route
-							path={`${baseUrl}todos`}
-							element={<ListOfTodos todos={testTodos} />}
-						/>
+						<Route path="/todos" element={<ListOfTodos todos={testTodos} />} />
 
-						<Route path={`${baseUrl}about`} element={<About />} />
+						<Route path="/todos/:todoId" element={<Todo todos={testTodos} />} />
 
-						<Route path={`${baseUrl}*`} element={<NotFound />} />
+						<Route path="/about" element={<About />} />
+
+						<Route path="*" element={<NotFound />} />
 						{/* <TodoItemForm /> */}
 					</Routes>
 				</section>
