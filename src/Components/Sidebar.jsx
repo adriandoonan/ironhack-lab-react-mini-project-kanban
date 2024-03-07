@@ -12,6 +12,7 @@ const Sidebar = () => {
 						<li>About</li>
 					</NavLink>
 					<button
+						type="button"
 						onClick={() => {
 							document.getElementById("new-todo-dialog").show();
 						}}

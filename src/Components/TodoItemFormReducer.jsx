@@ -18,6 +18,7 @@ const priorities = ["Low", "Medium", "High"];
 
 const TodoItemFormReducer = ({ dispatch, state }) => {
 	//console.log(dispatch);
+
 	return (
 		<dialog id="new-todo-dialog">
 			<form id="new-todo-form" method="dialog" style={formStyle}>
@@ -93,6 +94,7 @@ const TodoItemFormReducer = ({ dispatch, state }) => {
 					<button
 						type="reset"
 						style={{ backgroundColor: "red", borderColor: "red" }}
+						onClick={() => document.getElementById("new-todo-dialog").close()}
 					>
 						Cancel
 					</button>
