@@ -12,12 +12,15 @@ body {
   min-height: 100%;
 }
 
-header {
+header#main-header {
   padding-block: unset !important;
   max-height: 4rem;
+  position: sticky;
+  top: 0;
+  
   > nav {
     padding: 0 2rem;
-    background-color: rgba(87, 119, 59, 0.718);
+    background-color: rgba(87, 119, 59, 0.9);
     > ul {
       > a li {
         color: white;

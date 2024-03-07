@@ -20,8 +20,14 @@ const ListOfTodos = ({ todos }) => {
 		let newTodo;
 		switch (action.type) {
 			case "form-submit": {
+				const newTodoModal = document.getElementById("new-todo-dialog");
+				const newTodoForm = document.getElementById("new-todo-form");
 				action.payload.preventDefault();
 				console.log("got a form submit", action.payload);
+				console.log(
+					"parent",
+					action.payload.target.parentElement.parentElement.parentElement.close(),
+				);
 				const formData = new FormData(action.payload.target.form);
 
 				const vals = {};
@@ -50,6 +56,8 @@ const ListOfTodos = ({ todos }) => {
 				console.log(newTodoItem);
 				newTodo = newTodoItem;
 				//return newTodoItem;
+				newTodoModal.close();
+				newTodoForm.reset();
 				break;
 			}
 			default: {

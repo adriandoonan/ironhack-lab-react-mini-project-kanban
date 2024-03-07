@@ -2,7 +2,7 @@ import { Link, NavLink } from "react-router-dom";
 
 const Navbar = ({ logoImage, menuItems }) => {
 	return (
-		<header>
+		<header id="main-header">
 			<nav>
 				<ul>
 					<Link to="/">

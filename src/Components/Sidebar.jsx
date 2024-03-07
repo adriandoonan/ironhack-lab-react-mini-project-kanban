@@ -11,6 +11,13 @@ const Sidebar = () => {
 					<NavLink to="/about">
 						<li>About</li>
 					</NavLink>
+					<button
+						onClick={() => {
+							document.getElementById("new-todo-dialog").show();
+						}}
+					>
+						New Todo
+					</button>
 				</ul>
 			</nav>
 		</aside>
