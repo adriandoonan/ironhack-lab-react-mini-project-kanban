@@ -12,7 +12,7 @@ const Navbar = ({ logoImage, menuItems }) => {
 								src={logoImage}
 								alt="what a cool company"
 							/>
-							Cool jerks
+							cool jerks
 						</li>
 					</Link>
 				</ul>

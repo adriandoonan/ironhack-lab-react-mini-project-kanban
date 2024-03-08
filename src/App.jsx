@@ -66,6 +66,35 @@ function App() {
 		getExternalTodos();
 	}, []);
 
+	// what do I need to share here?
+	// from list of todos:
+	//    - edit form needs handleSubmit, todoId, todos
+	//    - single todo item needs what the edit form needs
+
+	const deleteTodo = (id) => {
+		const updatedTodos = todoItems.filter((todo) => todo.id !== id);
+		setExternalTodos(updatedTodos);
+		updateExternalTodosFunc(updatedTodos);
+	};
+
+	const [todoToEdit, setTodoToEdit] = useState("2");
+
+	const handleEditExistingTodo = (id) => {
+		console.log("got an edit request", id);
+		setTodoToEdit(externalTodos.find((todo) => todo.id === id));
+		document.getElementById("edit-todo-dialog").show();
+	};
+
+	const handleSubmitEdit = ({ event, todoToEdit }) => {
+		console.log("event", event);
+		console.log("todo", todoToEdit);
+		const updatedTodos = externalTodos.map((todo) =>
+			todo.id !== todoToEdit.id ? todo : todoToEdit,
+		);
+		setExternalTodos(updatedTodos);
+		updateExternalTodos(updatedTodos);
+	};
+
 	return (
 		<>
 			<Navbar
@@ -84,12 +113,24 @@ function App() {
 					<Routes>
 						<Route path="/" element={<HomePage />} />
 
+						{/* todos,
+						updateExternalTodosFunc,
+						handleEditExistingTodo,
+						handleSubmitEdit,
+						setTodoItems,
+						deleteTodo, */}
 						<Route
 							path="/todos"
 							element={
 								<ListOfTodos
-									todos={externalTodos}
+									todoItems={externalTodos}
 									updateExternalTodosFunc={updateExternalTodos}
+									handleEditExistingTodo={handleEditExistingTodo}
+									handleSubmitEdit={handleSubmitEdit}
+									setTodoItems={setExternalTodos}
+									deleteTodo={deleteTodo}
+									setTodoToEdit={setTodoToEdit}
+									todoToEdit={todoToEdit}
 								/>
 							}
 						/>
@@ -98,8 +139,14 @@ function App() {
 							path="/todos/:todoId"
 							element={
 								<Todo
-									todos={externalTodos}
+									todoItems={externalTodos}
 									updateExternalTodosFunc={updateExternalTodos}
+									handleEditExistingTodo={handleEditExistingTodo}
+									handleSubmitEdit={handleSubmitEdit}
+									setTodoItems={setExternalTodos}
+									deleteTodo={deleteTodo}
+									setTodoToEdit={setTodoToEdit}
+									todoToEdit={todoToEdit}
 								/>
 							}
 						/>

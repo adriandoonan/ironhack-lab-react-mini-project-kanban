@@ -4,8 +4,17 @@ import TodoItemFormReducer from "./TodoItemFormReducer";
 import NewTodoItemForm from "./NewTodoItemForm";
 import EditTodoItemForm from "./EditTodoItemForm";
 
-const ListOfTodos = ({ todos, updateExternalTodosFunc }) => {
-	const [todoItems, setTodoItems] = useState(todos);
+const ListOfTodos = ({
+	todoItems,
+	updateExternalTodosFunc,
+	handleEditExistingTodo,
+	handleSubmitEdit,
+	setTodoItems,
+	deleteTodo,
+	setTodoToEdit,
+	todoToEdit,
+}) => {
+	// const [todoItems, setTodoItems] = useState(todos);
 
 	const initialState = {
 		id: crypto.randomUUID(),
@@ -68,8 +77,6 @@ const ListOfTodos = ({ todos, updateExternalTodosFunc }) => {
 		return state;
 	};
 
-	const [state, dispatch] = useReducer(addNewTodo, initialState);
-
 	const handleAddNewTodo = ({ event, newTodo }) => {
 		console.log("event from handlesubmit", event);
 		const updatedTodos = [...todoItems, newTodo];
@@ -77,29 +84,29 @@ const ListOfTodos = ({ todos, updateExternalTodosFunc }) => {
 		updateExternalTodosFunc(updatedTodos);
 	};
 
-	const deleteTodo = (id) => {
-		const updatedTodos = todoItems.filter((todo) => todo.id !== id);
-		setTodoItems(updatedTodos);
-		updateExternalTodosFunc(updatedTodos);
-	};
+	// const deleteTodo = (id) => {
+	// 	const updatedTodos = todoItems.filter((todo) => todo.id !== id);
+	// 	setTodoItems(updatedTodos);
+	// 	updateExternalTodosFunc(updatedTodos);
+	// };
 
-	const [todoToEdit, setTodoToEdit] = useState("2");
+	// const [todoToEdit, setTodoToEdit] = useState("2");
 
-	const handleEditExistingTodo = (id) => {
-		console.log("got an edit request", id);
-		setTodoToEdit(id);
-		document.getElementById("edit-todo-dialog").show();
-	};
+	// const handleEditExistingTodo = (id) => {
+	// 	console.log("got an edit request", id);
+	// 	setTodoToEdit(id);
+	// 	document.getElementById("edit-todo-dialog").show();
+	// };
 
-	const handleSubmitEdit = ({ event, todoToEdit }) => {
-		console.log("event", event);
-		console.log("todo", todoToEdit);
-		const updatedTodos = todoItems.map((todo) =>
-			todo.id !== todoToEdit.id ? todo : todoToEdit,
-		);
-		setTodoItems(updatedTodos);
-		updateExternalTodosFunc(updatedTodos);
-	};
+	// const handleSubmitEdit = ({ event, todoToEdit }) => {
+	// 	console.log("event", event);
+	// 	console.log("todo", todoToEdit);
+	// 	const updatedTodos = todoItems.map((todo) =>
+	// 		todo.id !== todoToEdit.id ? todo : todoToEdit,
+	// 	);
+	// 	setTodoItems(updatedTodos);
+	// 	updateExternalTodosFunc(updatedTodos);
+	// };
 
 	return (
 		<>
@@ -156,8 +163,10 @@ const ListOfTodos = ({ todos, updateExternalTodosFunc }) => {
 			<EditTodoItemForm
 				handleSubmit={handleSubmitEdit}
 				setTodoToEdit={setTodoToEdit}
+				todoToEdit={todoToEdit}
 				todoId={todoToEdit}
 				todos={todoItems}
+				setTodoItems={setTodoItems}
 			/>
 		</>
 	);

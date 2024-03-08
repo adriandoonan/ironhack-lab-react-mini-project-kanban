@@ -46,26 +46,33 @@ const initialTodoState = {
 	dueDate: getFormattedDate(),
 };
 
-function EditTodoItemForm({ handleSubmit, todoId, todos }) {
+function EditTodoItemForm({
+	handleSubmit,
+	todoId,
+	todos,
+	todoToEdit,
+	setTodoToEdit,
+}) {
 	//console.log(dispatch);
 
-	const [todoToEdit, setTodoToEdit] = useState(initialTodoState);
+	//const [todoToEdit, setTodoToEdit] = useState(initialTodoState);
 
-	useEffect(() => {
-		//console.log("todo", todoId);
-		//console.log(todos);
-		const foundTodo = todos.find((todo) => {
-			//console.log("in a find", todo, todoId, todo.id == todoId);
-			return todo.id.toString() === todoId.toString();
-		});
-		// const foundTodo = todos.filter((todo) => {
-		// 	console.log("in the filter", todo.id == todoId);
-		// 	todo.id == todoId;
-		// });
-		//console.log("filtered", foundTodo);
-		setTodoToEdit(foundTodo || initialTodoState);
-		//console.log("here is the found todo", todoToEdit);
-	}, [todoId]);
+	// useEffect(() => {
+	// 	//console.log("todo", todoId);
+	// 	//console.log(todos);
+	// 	console.log("todo to edit", todoToEdit), "id", todoId;
+	// 	const foundTodo = todos.find((todo) => {
+	// 		//console.log("in a find", todo, todoId, todo.id == todoId);
+	// 		return todo.id.toString() === todoId.toString();
+	// 	});
+	// 	// const foundTodo = todos.filter((todo) => {
+	// 	// 	console.log("in the filter", todo.id == todoId);
+	// 	// 	todo.id == todoId;
+	// 	// });
+	// 	//console.log("filtered", foundTodo);
+	// 	setTodoToEdit(foundTodo || initialTodoState);
+	// 	//console.log("here is the found todo", todoToEdit);
+	// }, [todoId]);
 
 	return (
 		<dialog id="edit-todo-dialog">
@@ -84,19 +91,18 @@ function EditTodoItemForm({ handleSubmit, todoId, todos }) {
 					type="text"
 					placeholder="Task title..."
 					required
-					value={todoToEdit.title}
+					value={todoToEdit?.title}
 					onChange={(e) =>
 						setTodoToEdit({ ...todoToEdit, title: e.target.value })
 					}
 				/>
 
 				<label htmlFor="todo-item-description">Description</label>
-				<input
+				<textarea
 					id="todo-item-description"
 					name="description"
-					type="textarea"
 					placeholder="Task description..."
-					value={todoToEdit.description}
+					value={todoToEdit?.description}
 					onChange={(e) =>
 						setTodoToEdit({ ...todoToEdit, description: e.target.value })
 					}
@@ -108,7 +114,7 @@ function EditTodoItemForm({ handleSubmit, todoId, todos }) {
 					id="todo-item-due-date"
 					name="dueDate"
 					type="date"
-					value={todoToEdit.dueDate}
+					value={todoToEdit?.dueDate}
 					onChange={(e) =>
 						setTodoToEdit({ ...todoToEdit, dueDate: e.target.value })
 					}
@@ -120,7 +126,7 @@ function EditTodoItemForm({ handleSubmit, todoId, todos }) {
 					name="status"
 					type="select"
 					required
-					value={todoToEdit.status}
+					value={todoToEdit?.status}
 					onChange={(e) =>
 						setTodoToEdit({ ...todoToEdit, status: e.target.value })
 					}
@@ -144,7 +150,7 @@ function EditTodoItemForm({ handleSubmit, todoId, todos }) {
 					name="priority"
 					type="select"
 					required
-					value={todoToEdit.priority}
+					value={todoToEdit?.priority}
 					onChange={(e) =>
 						setTodoToEdit({ ...todoToEdit, priority: e.target.value })
 					}
@@ -167,7 +173,7 @@ function EditTodoItemForm({ handleSubmit, todoId, todos }) {
 					id="todo-item-assignee"
 					name="assignee"
 					type="text"
-					value={todoToEdit.assignee}
+					value={todoToEdit?.assignee}
 					onChange={(e) =>
 						setTodoToEdit({ ...todoToEdit, assignee: e.target.value })
 					}
