@@ -1,52 +1,192 @@
 [
 	{
 		"id": "1",
-		"title": "Design Landing Page",
-		"description": "Create a visually appealing landing page for the website.",
-		"assignee": "Mary Davis",
-		"status": "To Do",
-		"priority": "High",
-		"createdDate": "2023-09-15",
-		"dueDate": "2023-09-30"
+		"title": "Github repository",
+		"description": "A github repository should be created to house the project and team members should have access",
+		"assignee": "",
+		"status": "Done",
+		"priority": "Medium",
+		"createdDate": "2024-03-04",
+		"dueDate": "2024-03-13"
 	},
 	{
-		"id": "2",
-		"title": "Develop User Registration",
-		"description": "Implement user registration functionality with email verification.",
-		"assignee": "Jane Smith",
+		"id": "1a",
+		"title": "Single User SPA",
+		"description": "It should be an app made for a single user.",
+		"assignee": "",
 		"status": "In Progress",
 		"priority": "Medium",
-		"createdDate": "2023-09-16",
-		"dueDate": "2023-10-10"
+		"createdDate": "2024-03-04",
+		"dueDate": "2024-03-13"
 	},
 	{
-		"id": "3",
-		"title": "Bug Fix: Login Issue",
-		"description": "Investigate and fix the login problem reported by users.",
-		"assignee": "Mark Johnson",
-		"status": "In Progress",
-		"priority": "High",
-		"createdDate": "2023-09-17",
-		"dueDate": "2023-09-25"
-	},
-	{
-		"id": "4",
-		"title": "Release Version 1.0",
-		"description": "Prepare for the release of the first version of the application.",
-		"assignee": "Sarah Brown",
+		"id": "1b",
+		"title": "Navbar",
+		"description": "A component that displays the name and the logo of the app, shown on all the pages.",
+		"assignee": "",
 		"status": "To Do",
-		"priority": "High",
-		"createdDate": "2023-09-18",
-		"dueDate": "2023-10-05"
+		"priority": "Medium",
+		"createdDate": "2024-03-04",
+		"dueDate": "2024-03-13"
 	},
 	{
-		"id": "5",
-		"title": "Update Documentation",
-		"description": "Update user documentation with the latest features and changes.",
-		"assignee": "David Wilson",
-		"status": "Done",
-		"priority": "Low",
-		"createdDate": "2023-09-19",
-		"dueDate": "2023-09-30"
+		"id": "1c",
+		"title": "Footer",
+		"description": "A component that displays a link to the GitHub repo of the project, shown on all the pages.",
+		"assignee": "",
+		"status": "To Do",
+		"priority": "Medium",
+		"createdDate": "2024-03-04",
+		"dueDate": "2024-03-13"
+	},
+	{
+		"id": "1d",
+		"title": "Sidebar",
+		"description": "A sidebar component shown on all the pages. The component should display links to pages added to the app at a later stage.",
+		"assignee": "",
+		"status": "To Do",
+		"priority": "Medium",
+		"createdDate": "2024-03-04",
+		"dueDate": "2024-03-13"
+	},
+	{
+		"id": "2a",
+		"title": "Items List",
+		"description": "A list of items showing the JSON data.",
+		"assignee": "",
+		"status": "To Do",
+		"priority": "Medium",
+		"createdDate": "2024-03-05",
+		"dueDate": "2024-03-13"
+	},
+	{
+		"id": "2b",
+		"title": "Conditional Rendering",
+		"description": "Conditionally render content using boolean properties from the project’s JSON data.",
+		"assignee": "",
+		"status": "To Do",
+		"priority": "Medium",
+		"createdDate": "2024-03-05",
+		"dueDate": "2024-03-13"
+	},
+	{
+		"id": "2c",
+		"title": "Delete Items",
+		"description": "A button on each list item that allows the user to delete the item from the list.",
+		"assignee": "",
+		"status": "To Do",
+		"priority": "Medium",
+		"createdDate": "2024-03-05",
+		"dueDate": "2024-03-13"
+	},
+	{
+		"id": "3a",
+		"title": "Dashboard Page",
+		"description": "A page showing some stats about the items in the board that can act as a 'home page' for the user of the project.",
+		"assignee": "",
+		"status": "To Do",
+		"priority": "Medium",
+		"createdDate": "2024-03-06",
+		"dueDate": "2024-03-13"
+	},
+	{
+		"id": "3b",
+		"title": "Item Details Page",
+		"description": "A page showing the details of the selected item from the list of items.",
+		"assignee": "",
+		"status": "To Do",
+		"priority": "Medium",
+		"createdDate": "2024-03-06",
+		"dueDate": "2024-03-13"
+	},
+	{
+		"id": "3c",
+		"title": "About Page",
+		"description": "A page showing the project description and information about the team members (students) working on the project, including links to their GitHub and LinkedIn profiles.",
+		"assignee": "",
+		"status": "To Do",
+		"priority": "Medium",
+		"createdDate": "2024-03-06",
+		"dueDate": "2024-03-13"
+	},
+	{
+		"id": "3d",
+		"title": "Not Found Page",
+		"description": "A page shown whenever the user navigates to a URL route that doesn’t exist in the app.",
+		"assignee": "",
+		"status": "To Do",
+		"priority": "Medium",
+		"createdDate": "2024-03-06",
+		"dueDate": "2024-03-13"
+	},
+	{
+		"id": "4a",
+		"title": "Create Item Form",
+		"description": "A form that allows the user to create a new item and add it to the items list.",
+		"assignee": "",
+		"status": "To Do",
+		"priority": "Medium",
+		"createdDate": "2024-03-07",
+		"dueDate": "2024-03-13"
+	},
+	{
+		"id": "4b",
+		"title": "Update Item Form",
+		"description": "A form that allows the user to update an existing item on the list.",
+		"assignee": "",
+		"status": "To Do",
+		"priority": "Medium",
+		"createdDate": "2024-03-07",
+		"dueDate": "2024-03-13"
+	},
+	{
+		"id": "5a",
+		"title": "Online storage",
+		"description": "Add feature to save state of todos to external service. Use pantry with ID 03a06e51-b6b3-4f49-a584-22efe3180d55.",
+		"assignee": "",
+		"status": "To Do",
+		"priority": "Medium",
+		"createdDate": "2024-03-08",
+		"dueDate": "2024-03-13"
+	},
+	{
+		"id": "5b",
+		"title": "Drag and drop support",
+		"description": "A user should be able to drag one item from a kanban track to another and, in doing so, change the status of that item to match the status of the track they dropped it into.",
+		"assignee": "",
+		"status": "To Do",
+		"priority": "Medium",
+		"createdDate": "2024-03-08",
+		"dueDate": "2024-03-13"
+	},
+	{
+		"id": "6a",
+		"title": "Presentation",
+		"description": "A presentation about the creation of the project including minimal information on the people who created it.",
+		"assignee": "",
+		"status": "To Do",
+		"priority": "Medium",
+		"createdDate": "2024-03-11",
+		"dueDate": "2024-03-13"
+	},
+	{
+		"id": "6b",
+		"title": "Styling",
+		"description": "Make app look good and all that.",
+		"assignee": "",
+		"status": "To Do",
+		"priority": "Medium",
+		"createdDate": "2024-03-11",
+		"dueDate": "2024-03-13"
+	},
+	{
+		"id": "7a",
+		"title": "code cleanup",
+		"description": "Keep your code clean and organized by using descriptive variable names, correct indentation, removing any unused code, and maintaining proper file structure and naming.",
+		"assignee": "",
+		"status": "To Do",
+		"priority": "Medium",
+		"createdDate": "2024-03-12",
+		"dueDate": "2024-03-13"
 	}
 ]

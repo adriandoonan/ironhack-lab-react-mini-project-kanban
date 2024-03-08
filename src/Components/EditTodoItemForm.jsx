@@ -46,30 +46,25 @@ const initialTodoState = {
 	dueDate: getFormattedDate(),
 };
 
-function EditTodoItemForm({
-	handleSubmit,
-
-	todoId,
-	todos,
-}) {
+function EditTodoItemForm({ handleSubmit, todoId, todos }) {
 	//console.log(dispatch);
 
 	const [todoToEdit, setTodoToEdit] = useState(initialTodoState);
 
 	useEffect(() => {
-		console.log("todo", todoId);
-		console.log(todos);
+		//console.log("todo", todoId);
+		//console.log(todos);
 		const foundTodo = todos.find((todo) => {
-			console.log("in a find", todo, todoId, todo.id == todoId);
+			//console.log("in a find", todo, todoId, todo.id == todoId);
 			return todo.id.toString() === todoId.toString();
 		});
 		// const foundTodo = todos.filter((todo) => {
 		// 	console.log("in the filter", todo.id == todoId);
 		// 	todo.id == todoId;
 		// });
-		console.log("filtered", foundTodo);
+		//console.log("filtered", foundTodo);
 		setTodoToEdit(foundTodo || initialTodoState);
-		console.log("here is the found todo", todoToEdit);
+		//console.log("here is the found todo", todoToEdit);
 	}, [todoId]);
 
 	return (
@@ -118,6 +113,30 @@ function EditTodoItemForm({
 						setTodoToEdit({ ...todoToEdit, dueDate: e.target.value })
 					}
 				/>
+
+				<label htmlFor="todo-item-status">Status</label>
+				<select
+					id="todo-item-status"
+					name="status"
+					type="select"
+					required
+					value={todoToEdit.status}
+					onChange={(e) =>
+						setTodoToEdit({ ...todoToEdit, status: e.target.value })
+					}
+				>
+					<option disabled value="">
+						Select status
+					</option>
+					{progressStates.map((element) => {
+						const nameToValue = element.toLowerCase().replaceAll(" ", "-");
+						return (
+							<option key={nameToValue} value={element}>
+								{element}
+							</option>
+						);
+					})}
+				</select>
 
 				<label htmlFor="todo-item-priority">Priority</label>
 				<select
