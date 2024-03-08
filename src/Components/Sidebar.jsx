@@ -2,7 +2,7 @@ import { NavLink, useLocation } from "react-router-dom";
 
 const Sidebar = () => {
 	const currentPage = useLocation();
-	console.log(currentPage.pathname);
+	//console.log(currentPage.pathname);
 	return (
 		<aside data-theme="dark">
 			<nav id="sidebar-nav">
