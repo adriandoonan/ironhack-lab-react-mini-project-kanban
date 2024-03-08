@@ -20,7 +20,7 @@ header#main-header {
   
   > nav {
     padding: 0 2rem;
-    background-color: rgba(87, 119, 59, 0.9);
+    background-color: #1c1c1c;
     > ul {
       > a li {
         color: white;
@@ -29,6 +29,7 @@ header#main-header {
         img.logo-image {
           height: 40px;
           padding: 0;
+          margin-right: 0.5rem;
         }
       }
     }
@@ -44,11 +45,15 @@ main {
 }
 
 aside {
-  background-color: fuchsia;
+  background-color: #1c1c1c;
   > nav#sidebar-nav {
     padding: 0 2rem;
     position: sticky;
-    top: 60px;
+    top: 100px;
+    & button {
+        margin-top: 2rem;
+        padding: 0.2em;
+    }
   }
 }
 
@@ -67,6 +72,21 @@ aside {
     padding: 2px;
     background-color: lightgray;
     
+}
+
+.todo-item-button-group {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 1rem;
+}
+
+.button-small {
+    padding: 0.5em;
+}
+
+.button-danger {
+    background-color: rgb(156, 53, 53);
+    border: rgb(156, 53, 53);
 }
 
 .todo-item-form-button-container {
@@ -102,3 +122,62 @@ footer {
 .svg-icon.orange {
   filter: hue-rotate(180);
 }
+
+.icon {
+    width: 1em;
+    height: 1em;
+    fill: currentColor;
+}
+
+.icon--lg {
+    width: 1.5em;
+    height:1.5em;
+}
+
+.toast {
+    background-color: lightcoral;
+    padding: 1.5em;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border-radius: 0.5em;
+    position: relative;
+    color: greenyellow;
+    opacity: 0.9;
+    &:hover {
+        opacity: 1;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    }
+}
+
+.toast + .toast {
+    margin-top: 0.5em;
+}
+
+.toast-message {
+    display: flex;
+    gap: 1em;
+    align-items: top;
+}
+
+.toast-close-button {
+    position: absolute;
+    top: 0.5em;
+    right: 0.5em;
+    padding: 0;
+    line-height: 1;
+    height: 1em;
+    width: 1em;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: inherit;
+}
+
+// .toast-success {
+
+// }
+// .toast-danger {
+    
+// }
+// .toast-info {
+    
+// }

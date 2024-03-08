@@ -73,10 +73,9 @@ const NewTodoItemForm = ({ handleSubmit }) => {
 				/>
 
 				<label htmlFor="todo-item-description">Description</label>
-				<input
+				<textarea
 					id="todo-item-description"
 					name="description"
-					type="textarea"
 					placeholder="Task description..."
 					value={newTodo.description}
 					onChange={(e) =>
