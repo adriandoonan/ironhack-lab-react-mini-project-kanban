@@ -1,19 +1,21 @@
 import { useParams } from "react-router";
-import EditTodoItemForm from "../Components/EditTodoItemForm";
+import EditTodoItemForm from "../Components/forms/EditTodoItemForm";
 import { useEffect, useState } from "react";
+import TodoItemDetailView from "../Components/todos/TodoItemDetailView";
 
 const Todo = ({
-	todoItems,
-	updateExternalTodosFunc,
-	handleEditExistingTodo,
-	handleSubmitEdit,
-	setTodoItems,
-	deleteTodo,
-	setTodoToEdit,
-	todoToEdit,
+	todoItems, //={externalTodos}
+	updateExternalTodosFunc, //={updateExternalTodos}
+	handleEditExistingTodo, //={handleEditExistingTodo}
+	handleSubmitEdit, //={handleSubmitEdit}
+	setTodoItems, //={setExternalTodos}
+	deleteTodo, //={deleteTodo}
+	setTodoToEdit, //={setTodoToEdit}
+	todoToEdit, //={todoToEdit}
+	showEditForm,
 }) => {
 	const { todoId } = useParams();
-	console.log("the id param", todoId);
+	console.log("the id param todo page", todoId);
 
 	// const [theTodo, setTheTodo] = useState({});
 
@@ -25,18 +27,16 @@ const Todo = ({
 		});
 		console.log("here is the found todo", foundTodo);
 		setTodoToEdit(foundTodo);
-	}, []);
+	}, [todoId]);
 
 	console.log("the todos", todoItems);
 	return (
 		<div>
-			<h1>{todoToEdit.title}</h1>
-			<button
-				type="button"
-				onClick={() => document.getElementById("edit-todo-dialog").show()}
-			>
-				Edit
-			</button>
+			<TodoItemDetailView
+				todoItem={todoItems.find((todo) => todo.id === todoId)}
+				setTodoToEdit={setTodoToEdit}
+				showEditForm={showEditForm}
+			/>
 
 			<EditTodoItemForm
 				handleSubmit={handleSubmitEdit}

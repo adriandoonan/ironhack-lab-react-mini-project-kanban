@@ -1,7 +1,7 @@
-import caretUp from "../assets/caret-up.svg";
-import caretDown from "../assets/caret-down.svg";
-import caretLeft from "../assets/caret-left.svg";
-import { CaretDownSVG, CaretLeftSVG, CaretUpSVG } from "./Icons/Icons";
+import caretUp from "../../assets/caret-up.svg";
+import caretDown from "../../assets/caret-down.svg";
+import caretLeft from "../../assets/caret-left.svg";
+import { CaretDownSVG, CaretLeftSVG, CaretUpSVG } from "../Icons/Icons";
 import { Link } from "react-router-dom";
 
 const columnStyle = {
@@ -14,7 +14,18 @@ const titleStyle = {
 	justifyContent: "space-between",
 };
 
-const TodoItem = ({
+const truncateTodoDescription = (string) => {
+	let myString = string;
+	if (/\n/.test(myString)) {
+		myString = `${myString.split("\n")[0]} ...`;
+	}
+	if (myString.length > 200) {
+		return `${myString.substring(0, 200)} ...`;
+	}
+	return myString;
+};
+
+const TodoItemCard = ({
 	id,
 	title,
 	description,
@@ -54,7 +65,7 @@ const TodoItem = ({
 				</div>
 			</header>
 			<p>
-				{description ||
+				{truncateTodoDescription(description) ||
 					"some default description, blah, blah yadda, yadda, yadda"}
 			</p>
 			<footer style={{ textAlign: "left" }}>
@@ -80,4 +91,4 @@ const TodoItem = ({
 		</article>
 	);
 };
-export default TodoItem;
+export default TodoItemCard;

@@ -1,12 +1,12 @@
-import Footer from "./Components/Footer";
-import Sidebar from "./Components/Sidebar";
+import Footer from "./Components/navigation/Footer";
+import Sidebar from "./Components/navigation/Sidebar";
 
-import Navbar from "./Components/Navbar";
+import Navbar from "./Components/navigation/Navbar";
 import coolLogo from "./assets/cool-logo.png";
 
 import testTodos from "./data.json";
 import { Route, Routes } from "react-router-dom";
-import ListOfTodos from "./Components/ListOfTodos";
+import ListOfTodos from "./Components/todos/ListOfTodos";
 import HomePage from "./Pages/HomePage";
 import About from "./Pages/About";
 import NotFound from "./Pages/NotFound";
@@ -72,9 +72,9 @@ function App() {
 	//    - single todo item needs what the edit form needs
 
 	const deleteTodo = (id) => {
-		const updatedTodos = todoItems.filter((todo) => todo.id !== id);
+		const updatedTodos = externalTodos.filter((todo) => todo.id !== id);
 		setExternalTodos(updatedTodos);
-		updateExternalTodosFunc(updatedTodos);
+		updateExternalTodos(updatedTodos);
 	};
 
 	const [todoToEdit, setTodoToEdit] = useState("2");
@@ -82,7 +82,11 @@ function App() {
 	const handleEditExistingTodo = (id) => {
 		console.log("got an edit request", id);
 		setTodoToEdit(externalTodos.find((todo) => todo.id === id));
-		document.getElementById("edit-todo-dialog").show();
+		const editForm = document.getElementById("edit-todo-dialog");
+		const textarea = editForm.querySelector("textarea");
+
+		editForm.show();
+		textarea.style.height = `${textarea.scrollHeight}px`;
 	};
 
 	const handleSubmitEdit = ({ event, todoToEdit }) => {
@@ -93,6 +97,14 @@ function App() {
 		);
 		setExternalTodos(updatedTodos);
 		updateExternalTodos(updatedTodos);
+	};
+
+	const showEditForm = () => {
+		const editForm = document.getElementById("edit-todo-dialog");
+		const textarea = editForm.querySelector("textarea");
+
+		editForm.show();
+		textarea.style.height = `${textarea.scrollHeight}px`;
 	};
 
 	return (
@@ -131,6 +143,7 @@ function App() {
 									deleteTodo={deleteTodo}
 									setTodoToEdit={setTodoToEdit}
 									todoToEdit={todoToEdit}
+									showEditForm={showEditForm}
 								/>
 							}
 						/>
@@ -147,6 +160,7 @@ function App() {
 									deleteTodo={deleteTodo}
 									setTodoToEdit={setTodoToEdit}
 									todoToEdit={todoToEdit}
+									showEditForm={showEditForm}
 								/>
 							}
 						/>
