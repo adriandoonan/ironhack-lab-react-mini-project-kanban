@@ -4,16 +4,6 @@ import caretLeft from "../../assets/caret-left.svg";
 import { CaretDownSVG, CaretLeftSVG, CaretUpSVG } from "../Icons/Icons";
 import { Link } from "react-router-dom";
 
-const columnStyle = {
-	display: "flex",
-	flexDirection: "column",
-};
-
-const titleStyle = {
-	display: "flex",
-	justifyContent: "space-between",
-};
-
 const truncateTodoDescription = (string) => {
 	let myString = string;
 	if (/\n/.test(myString)) {
@@ -36,6 +26,7 @@ const TodoItemCard = ({
 	dueDate,
 	deleteTodo,
 	editTodo,
+	onDragStart,
 }) => {
 	const priorityIcons = {
 		High: { icon: caretUp, color: "red" },
@@ -49,44 +40,52 @@ const TodoItemCard = ({
 	};
 
 	return (
-		<article key={id} className="todo-item" draggable="true">
-			<header style={columnStyle}>
-				{/* <span>Status: {status}</span> */}
-				<div style={titleStyle}>
-					<Link to={`/todos/${id}`}>
-						<strong>{title || "This is an item"}</strong>
-					</Link>
-					{/* <img
-						className={`svg-icon ${priorityIcons[priority]?.color}`}
-						src={priorityIcons[priority].icon}
-						alt={`${priority} task`}
-					/> */}
-					{prioritySVGs[priority]}
-				</div>
+		<article
+			key={id}
+			id={id}
+			className="todo-item-card"
+			draggable="true"
+			onDragStart={(event) => onDragStart(event)}
+		>
+			<header>
+				<Link to={`/todos/${id}`}>
+					<strong>{title || "This is an item"}</strong>
+				</Link>
+				{prioritySVGs[priority]}
 			</header>
 			<p>
 				{truncateTodoDescription(description) ||
 					"some default description, blah, blah yadda, yadda, yadda"}
 			</p>
-			<footer style={{ textAlign: "left" }}>
-				<span style={{ display: "block" }}>Created: {createdDate}</span>
-				<span style={{ display: "block" }}>Assigned to: {assignee}</span>
-				<span className="todo-item-button-group">
-					<button
-						type="button"
-						className="button-small"
-						onClick={() => editTodo(id)}
-					>
-						Edit
-					</button>
-					<button
-						type="button"
-						className="button-small button-danger"
-						onClick={() => deleteTodo(id)}
-					>
-						Delete
-					</button>
-				</span>
+			{assignee && (
+				<p className="todo-item-card-details">
+					👤 <span>{assignee}</span>
+				</p>
+			)}
+			<p className="todo-item-card-details">
+				✏ <span>{createdDate}</span>
+			</p>
+			{dueDate && (
+				<p className="todo-item-card-details">
+					📆 <span>{dueDate}</span>
+				</p>
+			)}
+
+			<footer className="todo-item-card-button-group">
+				<button
+					type="button"
+					className="button-small"
+					onClick={() => editTodo(id)}
+				>
+					Edit
+				</button>
+				<button
+					type="button"
+					className="button-small button-danger"
+					onClick={() => deleteTodo(id)}
+				>
+					Delete
+				</button>
 			</footer>
 		</article>
 	);
