@@ -4,7 +4,7 @@ const HomePage = ({ todos }) => {
 	return (
 		<>
 			<h1>Home Page</h1>
-			<Dashboard />
+			<Dashboard todos={todos} />
 		</>
 	);
 };

@@ -164,7 +164,7 @@ const ListOfTodos = ({
 								setTodoToEdit={setTodoToEdit}
 								showEditForm={showEditForm}
 								onDragStart={dragStart}
-								onTouchStart={handleTouchStart}
+								// onTouchStart={handleTouchStart}
 							/>
 						))}
 				</section>
