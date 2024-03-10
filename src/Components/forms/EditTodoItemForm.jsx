@@ -1,37 +1,11 @@
-const formStyle = {
-	padding: "1rem 2rem",
-};
-
-const teamMembers = [
-	"David Wilson",
-	"Mark Johnson",
-	"Mary Davis",
-	"Jane Smith",
-	"Sarah Brown",
-];
-
-const progressStates = ["To Do", "In Progress", "Done"];
-
-const priorities = ["Low", "Medium", "High"];
-
-const getFormattedDate = () => {
-	const dateNow = new Date();
-	return `${dateNow.getFullYear()}-${(dateNow.getMonth() + 1)
-		.toString()
-		.padStart(2, "0")}-${dateNow.getDate().toString().padStart(2, "0")}`;
-};
-
-const initialTodoState = {
-	id: crypto.randomUUID(),
-	title: "",
-	description: "",
-	assignee: "",
-	status: "To Do",
-	priority: "",
-	createdDate: getFormattedDate(),
-	createdTimestamp: new Date(),
-	dueDate: getFormattedDate(),
-};
+import {
+	formStyle,
+	teamMembers,
+	progressStates,
+	priorities,
+	getFormattedDate,
+	initialTodoState,
+} from "./elements";
 
 function EditTodoItemForm({
 	handleSubmit,

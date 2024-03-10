@@ -295,7 +295,32 @@ section#main-content {
   margin: 0;
 }
 
-footer {
+article.todo-item-card {
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  > p {
+    font-size: 0.8rem;
+     &.todo-item-card-details {
+      margin:0;
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+  >footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    > button {
+      margin-bottom: 0;
+      font-size: 0.8rem;
+    }
+  }
+}
+
+footer#main-footer {
   background-color: cornflowerblue;
   width: 100%;
   position: relative;

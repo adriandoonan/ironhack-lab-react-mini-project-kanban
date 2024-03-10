@@ -1,6 +1,6 @@
 const Footer = ({ githubLink, githubRepoName }) => {
 	return (
-		<footer>
+		<footer id="main-footer">
 			<a href={githubLink} target="_blank" rel="noreferrer">
 				<svg
 					height="25"
