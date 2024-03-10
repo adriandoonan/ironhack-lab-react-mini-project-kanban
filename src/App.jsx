@@ -123,7 +123,7 @@ function App() {
 
 				<section id="main-content">
 					<Routes>
-						<Route path="/" element={<HomePage />} />
+						<Route path="/" element={<HomePage todos={externalTodos} />} />
 
 						{/* todos,
 						updateExternalTodosFunc,

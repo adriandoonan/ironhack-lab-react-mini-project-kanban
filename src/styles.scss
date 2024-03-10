@@ -258,6 +258,12 @@ aside#sidebar {
   }
 }}
 
+@media screen and (max-width: 350px) {
+  span#company-name {
+    display: none;
+  }
+}
+
 section#main-content {
   background-color: burlywood;
   flex-basis: 90%;
