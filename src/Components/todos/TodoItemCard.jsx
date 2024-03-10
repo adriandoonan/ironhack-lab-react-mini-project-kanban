@@ -27,6 +27,7 @@ const TodoItemCard = ({
 	deleteTodo,
 	editTodo,
 	onDragStart,
+	onTouchStart,
 }) => {
 	const priorityIcons = {
 		High: { icon: caretUp, color: "red" },
@@ -46,6 +47,7 @@ const TodoItemCard = ({
 			className="todo-item-card"
 			draggable="true"
 			onDragStart={(event) => onDragStart(event)}
+			onTouchStart={(event) => onTouchStart(event)}
 		>
 			<header>
 				<Link to={`/todos/${id}`}>
@@ -59,15 +61,24 @@ const TodoItemCard = ({
 			</p>
 			{assignee && (
 				<p className="todo-item-card-details">
-					👤 <span>{assignee}</span>
+					<span role="img" aria-label="assignee" data-tooltip="Assigned to:">
+						👤
+					</span>{" "}
+					<span>{assignee}</span>
 				</p>
 			)}
 			<p className="todo-item-card-details">
-				✏ <span>{createdDate}</span>
+				<span role="img" aria-label="created date" data-tooltip="Created on:">
+					✏
+				</span>{" "}
+				<span>{createdDate}</span>
 			</p>
 			{dueDate && (
 				<p className="todo-item-card-details">
-					📆 <span>{dueDate}</span>
+					<span role="img" aria-label="due date" data-tooltip="Due by:">
+						📆
+					</span>{" "}
+					<span>{dueDate}</span>
 				</p>
 			)}
 

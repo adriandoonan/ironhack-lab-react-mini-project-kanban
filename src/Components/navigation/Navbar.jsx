@@ -17,11 +17,11 @@ const Navbar = ({ logoImage, menuItems }) => {
 					</Link>
 				</ul>
 				<ul>
-					{menuItems.map((item) => (
+					{/* {menuItems.map((item) => (
 						<NavLink key={item.name.replaceAll(" ", "-")} to={item.link}>
 							<li>{item.name}</li>
 						</NavLink>
-					))}
+					))} */}
 				</ul>
 			</nav>
 		</header>
