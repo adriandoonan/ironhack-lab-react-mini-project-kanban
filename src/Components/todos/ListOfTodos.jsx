@@ -1,7 +1,7 @@
 import NewTodoItemForm from "../forms/NewTodoItemForm";
 import EditTodoItemForm from "../forms/EditTodoItemForm";
 import TodoItemCard from "./TodoItemCard";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 const ListOfTodos = ({
 	todoItems,
@@ -38,6 +38,7 @@ const ListOfTodos = ({
 		dragItem.current = event.target.id;
 		console.log("dragItem", dragItem.current);
 	};
+
 	const dragEnter = (event) => {
 		// console.log(event);
 		// console.log("card", event.target.closest(".todo-item-card")?.id);
@@ -53,6 +54,9 @@ const ListOfTodos = ({
 			.getAttribute("data-todo-status");
 	};
 	const drop = () => {
+		if (dragItem.current === dragOverItem.current) {
+			return;
+		}
 		console.log(
 			"i would be dropping",
 			dragItem.current,
@@ -81,6 +85,59 @@ const ListOfTodos = ({
 		allTodos.splice(itemToDropAfterIndex, 0, itemToMove[0]);
 		console.log(allTodos);
 		setTodoItems([...allTodos]);
+		updateExternalTodosFunc(todoItems);
+	};
+
+	const [{ dx, dy }, setOffset] = useState({
+		dx: 0,
+		dy: 0,
+	});
+
+	const [startPos, setStartPos] = useState({
+		x: 0,
+		y: 0,
+	});
+	const [isBeingTouched, setIsBeingTouched] = useState(false);
+
+	const handleTouchStart = (event) => {
+		const touch = event.touches[0];
+		const touchedItemId = event.target.closest(".todo-item-card").id;
+		console.log("touched", touchedItemId);
+		console.log(event);
+		dragItem.current = touchedItemId;
+		setIsBeingTouched(true);
+
+		setStartPos({
+			x: touch.clientX - dx,
+			y: touch.clientY - dy,
+		});
+
+		const handleTouchMove = (event) => {
+			const ele = event.target.closest("todo-item-card");
+			if (!ele || !isBeingTouched) {
+				return;
+			}
+			console.log(ele);
+			ele.style.position = absolute;
+			// How far the mouse has been moved
+			const dx = event.clientX - startPos.x;
+			const dy = event.clientY - startPos.y;
+
+			// Set the position of element
+			ele.style.transform = `translate(${dx}px, ${dy}px)`;
+
+			// Reassign the position of mouse
+			setOffset({ dx, dy });
+		};
+
+		const handleTouchEnd = () => {
+			document.removeEventListener("touchmove", handleTouchMove);
+			document.removeEventListener("touchend", handleTouchEnd);
+			setIsBeingTouched(false);
+		};
+
+		document.addEventListener("touchmove", handleTouchMove);
+		document.addEventListener("touchend", handleTouchEnd);
 	};
 
 	return (
@@ -107,6 +164,7 @@ const ListOfTodos = ({
 								setTodoToEdit={setTodoToEdit}
 								showEditForm={showEditForm}
 								onDragStart={dragStart}
+								onTouchStart={handleTouchStart}
 							/>
 						))}
 				</section>

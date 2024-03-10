@@ -4,7 +4,7 @@ const Sidebar = () => {
 	const currentPage = useLocation();
 	//console.log(currentPage.pathname);
 	return (
-		<aside data-theme="dark">
+		<aside id="sidebar" data-theme="dark">
 			<nav id="sidebar-nav">
 				<ul>
 					<NavLink to="/">
@@ -23,7 +23,8 @@ const Sidebar = () => {
 								document.getElementById("new-todo-dialog").show();
 							}}
 						>
-							New Todo
+							Add <br />
+							Todo
 						</button>
 					)}
 				</ul>
