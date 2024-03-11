@@ -5,6 +5,8 @@ import Navbar from "./Components/navigation/Navbar";
 import coolLogo from "./assets/cool-logo.png";
 
 import testTodos from "./data.json";
+import todos from "./todos-11-mar.json";
+
 import { Route, Routes } from "react-router-dom";
 import ListOfTodos from "./Pages/ListOfTodos";
 import HomePage from "./Pages/HomePage";
@@ -18,7 +20,7 @@ const pantryId = "03a06e51-b6b3-4f49-a584-22efe3180d55";
 function App() {
 	const [externalTodos, setExternalTodos] = useState([]);
 	const [isLoading, setIsLoading] = useState(true);
-	let offlineMode = false;
+	let offlineMode = true;
 
 	const getExternalTodos = async () => {
 		try {
@@ -64,14 +66,14 @@ function App() {
 	};
 
 	useEffect(() => {
+		if (offlineMode) {
+			setExternalTodos(todos.todos);
+			setIsLoading(false);
+			return;
+		}
 		getExternalTodos();
 		setTimeout(setIsLoading(false), 2000);
 	}, []);
-
-	// what do I need to share here?
-	// from list of todos:
-	//    - edit form needs handleSubmit, todoId, todos
-	//    - single todo item needs what the edit form needs
 
 	const deleteTodo = (id) => {
 		const updatedTodos = externalTodos.filter((todo) => todo.id !== id);
@@ -130,12 +132,6 @@ function App() {
 							element={<HomePage todos={externalTodos} isLoading={isLoading} />}
 						/>
 
-						{/* todos,
-						updateExternalTodosFunc,
-						handleEditExistingTodo,
-						handleSubmitEdit,
-						setTodoItems,
-						deleteTodo, */}
 						<Route
 							path="/todos"
 							element={
@@ -173,7 +169,6 @@ function App() {
 						<Route path="/about" element={<About />} />
 
 						<Route path="*" element={<NotFound />} />
-						{/* <TodoItemForm /> */}
 					</Routes>
 				</section>
 			</main>

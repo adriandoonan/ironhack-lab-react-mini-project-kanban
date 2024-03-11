@@ -166,16 +166,20 @@ main {
   padding-block: 0 !important;
 }
 
-#main-content {
+
+section#main-content {
+  background-color: burlywood;
+  flex-basis: auto;
+  max-width: 1200px;
   overflow-y: auto;
   margin: 0 auto;
 }
 
 aside#sidebar {
   background-color: green;
-  flex-basis: 10%;
   height: 100%;
-  width: 100%;
+  min-width: 100px;
+  flex-shrink: 0;
   align-self: flex-start;
   justify-content: center;
   display: flex;
@@ -210,17 +214,19 @@ aside#sidebar {
     width: fit-content;
     height: 56px;
     margin-left: auto;
+    
 
     & > nav#sidebar-nav > ul {
 
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
-    align-items: baseline;
+    align-items:baseline;
     padding: 0.25rem;
+    
 
     & button {
-      margin-bottom: 0;
+      margin: 0;
       & br {
         display: none
       }
@@ -228,16 +234,19 @@ aside#sidebar {
   }
 }}
 
-@media screen and (max-width: 350px) {
+@media screen and (max-width: 442px) {
   span#company-name {
     display: none;
   }
 }
 
-section#main-content {
-  background-color: burlywood;
-  flex-basis: 90%;
+@media screen and (max-width: 365px) {
+  .logo-image{
+    opacity: 0;
+  }
 }
+
+
 
 .list-of-todos {
   background-color: white;
