@@ -15,6 +15,10 @@ import NotFound from "./Pages/NotFound";
 import Todo from "./Pages/Todo";
 import { useEffect, useState } from "react";
 
+import toast, { Toaster } from "react-hot-toast";
+
+const notify = () => toast("Here is your toast.");
+
 const pantryId = "03a06e51-b6b3-4f49-a584-22efe3180d55";
 
 function App() {
@@ -69,16 +73,19 @@ function App() {
 		if (offlineMode) {
 			setExternalTodos(todos.todos);
 			setIsLoading(false);
+			toast("using local todos", "✅");
 			return;
 		}
 		getExternalTodos();
+		toast("got todos from server", "✅");
 		setTimeout(setIsLoading(false), 2000);
 	}, []);
 
 	const deleteTodo = (id) => {
 		const updatedTodos = externalTodos.filter((todo) => todo.id !== id);
 		setExternalTodos(updatedTodos);
-		updateExternalTodos(updatedTodos);
+		!offlineMode && updateExternalTodos(updatedTodos);
+		toast("todo deleted", "❌");
 	};
 
 	const [todoToEdit, setTodoToEdit] = useState("2");
@@ -100,7 +107,8 @@ function App() {
 			todo.id !== todoToEdit.id ? todo : todoToEdit,
 		);
 		setExternalTodos(updatedTodos);
-		updateExternalTodos(updatedTodos);
+		!offlineMode && updateExternalTodos(updatedTodos);
+		toast("todo edited", '"✅');
 	};
 
 	const showEditForm = () => {
@@ -113,6 +121,19 @@ function App() {
 
 	return (
 		<>
+			{offlineMode && (
+				<div
+					style={{
+						position: "fixed",
+						top: 0,
+						zIndex: 42069,
+						backgroundColor: "red",
+						color: "white",
+					}}
+				>
+					offline mode!
+				</div>
+			)}
 			<Navbar
 				logoImage={coolLogo}
 				menuItems={[
@@ -145,6 +166,7 @@ function App() {
 									setTodoToEdit={setTodoToEdit}
 									todoToEdit={todoToEdit}
 									showEditForm={showEditForm}
+									offlineMode={offlineMode}
 								/>
 							}
 						/>
@@ -162,6 +184,7 @@ function App() {
 									setTodoToEdit={setTodoToEdit}
 									todoToEdit={todoToEdit}
 									showEditForm={showEditForm}
+									offlineMode={offlineMode}
 								/>
 							}
 						/>
@@ -172,7 +195,7 @@ function App() {
 					</Routes>
 				</section>
 			</main>
-
+			<Toaster />
 			<Footer
 				githubLink="https://github.com/adriandoonan/ironhack-lab-react-mini-project-kanban"
 				githubRepoName="React Mini Project"
