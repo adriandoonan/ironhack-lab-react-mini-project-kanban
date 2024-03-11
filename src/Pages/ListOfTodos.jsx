@@ -24,9 +24,6 @@ const ListOfTodos = ({
 		createdDate: "",
 	};
 
-	const groupedTodos =
-		todoItems.length && Map.groupBy(todoItems, (todoItem) => todoItem.status);
-
 	const handleAddNewTodo = ({ event, newTodo }) => {
 		console.log("event from handlesubmit", event);
 		newTodo.id = crypto.randomUUID();
@@ -52,6 +49,7 @@ const ListOfTodos = ({
 		dragOverItem.current = event.target.closest(".todo-item-card")
 			? event.target.closest(".todo-item-card").id
 			: null;
+		dragOverItem.lastElement = event.target.closest(".todo-item-card");
 		dragOverItem.status = event.target
 			.closest(".kanban-track")
 			.getAttribute("data-todo-status");
@@ -148,6 +146,10 @@ const ListOfTodos = ({
 		return <h2 aria-busy="true">Loading</h2>;
 	}
 
+	const groupedTodos =
+		todoItems.length &&
+		Map.groupBy(todoItems, (todoItem) => todoItem.status || "no status!");
+
 	return (
 		<>
 			<section className="list-of-todos grid">
@@ -156,6 +158,7 @@ const ListOfTodos = ({
 					id="todos-todo"
 					data-todo-status="To Do"
 					onDragEnter={(event) => dragEnter(event)}
+					onDragExit={(event) => dragExit(event)}
 					onDragEnd={drop}
 				>
 					<span className="kanban-track-title">
@@ -179,6 +182,7 @@ const ListOfTodos = ({
 					id="todos-in-progress"
 					data-todo-status="In Progress"
 					onDragEnter={(event) => dragEnter(event)}
+					onDragExit={(event) => dragExit(event)}
 					onDragEnd={drop}
 				>
 					<span className="kanban-track-title">
@@ -201,6 +205,7 @@ const ListOfTodos = ({
 					id="todos-done"
 					data-todo-status="Done"
 					onDragEnter={(event) => dragEnter(event)}
+					onDragExit={(event) => dragExit(event)}
 					onDragEnd={drop}
 				>
 					<span className="kanban-track-title">

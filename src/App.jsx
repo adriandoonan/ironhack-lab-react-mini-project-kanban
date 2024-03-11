@@ -68,11 +68,6 @@ function App() {
 		setTimeout(setIsLoading(false), 2000);
 	}, []);
 
-	// what do I need to share here?
-	// from list of todos:
-	//    - edit form needs handleSubmit, todoId, todos
-	//    - single todo item needs what the edit form needs
-
 	const deleteTodo = (id) => {
 		const updatedTodos = externalTodos.filter((todo) => todo.id !== id);
 		setExternalTodos(updatedTodos);
@@ -130,12 +125,6 @@ function App() {
 							element={<HomePage todos={externalTodos} isLoading={isLoading} />}
 						/>
 
-						{/* todos,
-						updateExternalTodosFunc,
-						handleEditExistingTodo,
-						handleSubmitEdit,
-						setTodoItems,
-						deleteTodo, */}
 						<Route
 							path="/todos"
 							element={
@@ -173,7 +162,6 @@ function App() {
 						<Route path="/about" element={<About />} />
 
 						<Route path="*" element={<NotFound />} />
-						{/* <TodoItemForm /> */}
 					</Routes>
 				</section>
 			</main>

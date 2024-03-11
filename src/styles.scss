@@ -173,7 +173,7 @@ main {
 
 aside#sidebar {
   background-color: green;
-  flex-basis: 10%;
+  flex-basis: 12%;
   height: 100%;
   width: 100%;
   align-self: flex-start;
@@ -228,15 +228,21 @@ aside#sidebar {
   }
 }}
 
-@media screen and (max-width: 350px) {
+@media screen and (max-width: 442px) {
   span#company-name {
     display: none;
   }
 }
 
+@media screen and (max-width: 365px) {
+  .logo-image{
+    opacity: 0;
+  }
+}
+
 section#main-content {
   background-color: burlywood;
-  flex-basis: 90%;
+  flex-basis: 88%;
 }
 
 .list-of-todos {
