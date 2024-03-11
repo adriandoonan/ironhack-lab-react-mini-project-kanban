@@ -5,6 +5,8 @@ import Navbar from "./Components/navigation/Navbar";
 import coolLogo from "./assets/cool-logo.png";
 
 import testTodos from "./data.json";
+import todos from "./todos-11-mar.json";
+
 import { Route, Routes } from "react-router-dom";
 import ListOfTodos from "./Pages/ListOfTodos";
 import HomePage from "./Pages/HomePage";
@@ -18,7 +20,7 @@ const pantryId = "03a06e51-b6b3-4f49-a584-22efe3180d55";
 function App() {
 	const [externalTodos, setExternalTodos] = useState([]);
 	const [isLoading, setIsLoading] = useState(true);
-	let offlineMode = false;
+	let offlineMode = true;
 
 	const getExternalTodos = async () => {
 		try {
@@ -64,6 +66,11 @@ function App() {
 	};
 
 	useEffect(() => {
+		if (offlineMode) {
+			setExternalTodos(todos.todos);
+			setIsLoading(false);
+			return;
+		}
 		getExternalTodos();
 		setTimeout(setIsLoading(false), 2000);
 	}, []);
