@@ -1,7 +1,5 @@
 import { CaretDownSVG, CaretLeftSVG, CaretUpSVG } from "../Icons/Icons";
 import { Link } from "react-router-dom";
-import { useSortable } from "@dnd-kit/sortable";
-import { CSS } from "@dnd-kit/utilities";
 
 const truncateTodoDescription = (string) => {
 	let myString = string;
@@ -32,31 +30,8 @@ const TodoItemCard = ({
 		Low: <CaretDownSVG />,
 	};
 
-	const { attributes, listeners, setNodeRef, transform, transition } =
-		useSortable({
-			id: id,
-			data: {
-				title,
-				parent,
-			},
-		});
-
-	const style = {
-		transform: CSS.Translate.toString(transform),
-		transition,
-	};
-
 	return (
-		<article
-			key={id}
-			id={id}
-			className="todo-item-card"
-			ref={setNodeRef}
-			style={style}
-			{...listeners}
-			{...attributes}
-			role="article"
-		>
+		<article key={id} id={id} className="todo-item-card">
 			<header>
 				<Link to={`/todos/${id}`}>
 					<strong>{title || "This is an item"}</strong>

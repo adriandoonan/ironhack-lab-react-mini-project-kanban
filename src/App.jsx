@@ -4,7 +4,6 @@ import Sidebar from "./Components/navigation/Sidebar";
 import Navbar from "./Components/navigation/Navbar";
 import coolLogo from "./assets/cool-logo.png";
 
-import testTodos from "./data.json";
 import todos from "./todos-11-mar.json";
 
 import { Route, Routes } from "react-router-dom";
