@@ -286,7 +286,7 @@ aside#sidebar {
 
 
 article.todo-item-card {
-  
+  touch-action: manipulation;
   header {
     display: flex;
     justify-content: space-between;

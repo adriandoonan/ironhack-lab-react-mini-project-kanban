@@ -19,6 +19,35 @@ import {
 	verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
 
+import toast from "react-hot-toast";
+
+const notify = (message = "Here is your toast.", icon = "👏") => {
+	console.log("someone asked for a message", message);
+	toast(message, {
+		duration: 4000,
+		position: "top-center",
+
+		// Styling
+		style: {},
+		className: "",
+
+		// Custom Icon
+		icon: icon,
+
+		// Change colors of success/error/loading icon
+		iconTheme: {
+			primary: "#000",
+			secondary: "#fff",
+		},
+
+		// Aria
+		ariaProps: {
+			role: "status",
+			"aria-live": "polite",
+		},
+	});
+};
+
 const defaultAnnouncements = {
 	onDragStart(id) {
 		console.log(`Picked up draggable item ${id}.`);
@@ -58,6 +87,7 @@ const ListOfTodos = ({
 	setTodoToEdit,
 	todoToEdit,
 	showEditForm,
+	offlineMode,
 }) => {
 	const initialState = {
 		title: "",
@@ -120,7 +150,8 @@ const ListOfTodos = ({
 		newTodo.id = crypto.randomUUID();
 		const updatedTodos = [...todoItems, newTodo];
 		setTodoItems(updatedTodos);
-		updateExternalTodosFunc(updatedTodos);
+		!offlineMode && updateExternalTodosFunc(updatedTodos);
+		notify("new todo created", "✅");
 	};
 
 	if (!todoItems.length) {
