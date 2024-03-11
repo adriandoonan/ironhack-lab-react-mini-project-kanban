@@ -1,6 +1,6 @@
-import NewTodoItemForm from "../forms/NewTodoItemForm";
-import EditTodoItemForm from "../forms/EditTodoItemForm";
-import TodoItemCard from "./TodoItemCard";
+import NewTodoItemForm from "../Components/forms/NewTodoItemForm";
+import EditTodoItemForm from "../Components/forms/EditTodoItemForm";
+import TodoItemCard from "../Components/todos/TodoItemCard";
 import { useRef, useState } from "react";
 
 const ListOfTodos = ({
@@ -23,6 +23,9 @@ const ListOfTodos = ({
 		dueDate: "",
 		createdDate: "",
 	};
+
+	const groupedTodos =
+		todoItems.length && Map.groupBy(todoItems, (todoItem) => todoItem.status);
 
 	const handleAddNewTodo = ({ event, newTodo }) => {
 		console.log("event from handlesubmit", event);
@@ -53,6 +56,7 @@ const ListOfTodos = ({
 			.closest(".kanban-track")
 			.getAttribute("data-todo-status");
 	};
+
 	const drop = () => {
 		if (dragItem.current === dragOverItem.current) {
 			return;
@@ -140,6 +144,10 @@ const ListOfTodos = ({
 		document.addEventListener("touchend", handleTouchEnd);
 	};
 
+	if (!todoItems.length) {
+		return <h2 aria-busy="true">Loading</h2>;
+	}
+
 	return (
 		<>
 			<section className="list-of-todos grid">
@@ -153,20 +161,18 @@ const ListOfTodos = ({
 					<span className="kanban-track-title">
 						<p>To Do</p>
 					</span>
-					{todoItems
-						.filter((todoItem) => todoItem.status === "To Do")
-						.map((todoItem) => (
-							<TodoItemCard
-								{...todoItem}
-								key={todoItem.id}
-								deleteTodo={deleteTodo}
-								editTodo={handleEditExistingTodo}
-								setTodoToEdit={setTodoToEdit}
-								showEditForm={showEditForm}
-								onDragStart={dragStart}
-								// onTouchStart={handleTouchStart}
-							/>
-						))}
+					{groupedTodos.get("To Do").map((todoItem) => (
+						<TodoItemCard
+							{...todoItem}
+							key={todoItem.id}
+							deleteTodo={deleteTodo}
+							editTodo={handleEditExistingTodo}
+							setTodoToEdit={setTodoToEdit}
+							showEditForm={showEditForm}
+							onDragStart={dragStart}
+							// onTouchStart={handleTouchStart}
+						/>
+					))}
 				</section>
 				<section
 					className="kanban-track"
@@ -178,19 +184,17 @@ const ListOfTodos = ({
 					<span className="kanban-track-title">
 						<p>In Progress</p>
 					</span>
-					{todoItems
-						.filter((todoItem) => todoItem.status === "In Progress")
-						.map((todoItem) => (
-							<TodoItemCard
-								{...todoItem}
-								key={todoItem.id}
-								deleteTodo={deleteTodo}
-								editTodo={handleEditExistingTodo}
-								setTodoToEdit={setTodoToEdit}
-								showEditForm={showEditForm}
-								onDragStart={dragStart}
-							/>
-						))}
+					{groupedTodos.get("In Progress").map((todoItem) => (
+						<TodoItemCard
+							{...todoItem}
+							key={todoItem.id}
+							deleteTodo={deleteTodo}
+							editTodo={handleEditExistingTodo}
+							setTodoToEdit={setTodoToEdit}
+							showEditForm={showEditForm}
+							onDragStart={dragStart}
+						/>
+					))}
 				</section>
 				<section
 					className="kanban-track"
@@ -202,19 +206,17 @@ const ListOfTodos = ({
 					<span className="kanban-track-title">
 						<p>Done</p>
 					</span>
-					{todoItems
-						.filter((todoItem) => todoItem.status === "Done")
-						.map((todoItem) => (
-							<TodoItemCard
-								{...todoItem}
-								key={todoItem.id}
-								deleteTodo={deleteTodo}
-								editTodo={handleEditExistingTodo}
-								setTodoToEdit={setTodoToEdit}
-								showEditForm={showEditForm}
-								onDragStart={dragStart}
-							/>
-						))}
+					{groupedTodos.get("Done").map((todoItem) => (
+						<TodoItemCard
+							{...todoItem}
+							key={todoItem.id}
+							deleteTodo={deleteTodo}
+							editTodo={handleEditExistingTodo}
+							setTodoToEdit={setTodoToEdit}
+							showEditForm={showEditForm}
+							onDragStart={dragStart}
+						/>
+					))}
 				</section>
 			</section>
 
