@@ -6,7 +6,7 @@ import coolLogo from "./assets/cool-logo.png";
 
 import testTodos from "./data.json";
 import { Route, Routes } from "react-router-dom";
-import ListOfTodos from "./Components/todos/ListOfTodos";
+import ListOfTodos from "./Pages/ListOfTodos";
 import HomePage from "./Pages/HomePage";
 import About from "./Pages/About";
 import NotFound from "./Pages/NotFound";
@@ -17,6 +17,7 @@ const pantryId = "03a06e51-b6b3-4f49-a584-22efe3180d55";
 
 function App() {
 	const [externalTodos, setExternalTodos] = useState([]);
+	const [isLoading, setIsLoading] = useState(true);
 	let offlineMode = false;
 
 	const getExternalTodos = async () => {
@@ -64,6 +65,7 @@ function App() {
 
 	useEffect(() => {
 		getExternalTodos();
+		setTimeout(setIsLoading(false), 2000);
 	}, []);
 
 	// what do I need to share here?
@@ -123,7 +125,10 @@ function App() {
 
 				<section id="main-content">
 					<Routes>
-						<Route path="/" element={<HomePage todos={externalTodos} />} />
+						<Route
+							path="/"
+							element={<HomePage todos={externalTodos} isLoading={isLoading} />}
+						/>
 
 						{/* todos,
 						updateExternalTodosFunc,

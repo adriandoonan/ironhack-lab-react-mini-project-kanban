@@ -1,6 +1,3 @@
-import caretUp from "../../assets/caret-up.svg";
-import caretDown from "../../assets/caret-down.svg";
-import caretLeft from "../../assets/caret-left.svg";
 import { CaretDownSVG, CaretLeftSVG, CaretUpSVG } from "../Icons/Icons";
 import { Link } from "react-router-dom";
 
@@ -29,11 +26,6 @@ const TodoItemCard = ({
 	onDragStart,
 	onTouchStart,
 }) => {
-	const priorityIcons = {
-		High: { icon: caretUp, color: "red" },
-		Medium: { icon: caretLeft, color: "orange" },
-		Low: { icon: caretDown, color: "green" },
-	};
 	const prioritySVGs = {
 		High: <CaretUpSVG />,
 		Medium: <CaretLeftSVG />,
@@ -61,21 +53,21 @@ const TodoItemCard = ({
 			</p>
 			{assignee && (
 				<p className="todo-item-card-details">
-					<span role="img" aria-label="assignee" data-tooltip="Assigned to:">
+					<span role="img" aria-label="assignee" data-tooltip="Assigned to">
 						👤
 					</span>{" "}
 					<span>{assignee}</span>
 				</p>
 			)}
 			<p className="todo-item-card-details">
-				<span role="img" aria-label="created date" data-tooltip="Created on:">
+				<span role="img" aria-label="created date" data-tooltip="Created on">
 					✏
 				</span>{" "}
 				<span>{createdDate}</span>
 			</p>
 			{dueDate && (
 				<p className="todo-item-card-details">
-					<span role="img" aria-label="due date" data-tooltip="Due by:">
+					<span role="img" aria-label="due date" data-tooltip="Due by">
 						📆
 					</span>{" "}
 					<span>{dueDate}</span>

@@ -20,9 +20,9 @@ const calculateRecentTasks = (todos) => {
 		.map((todo) => new Date(todo.createdDate))
 		.filter((date) => date > aWeekAgo);
 
-	console.log(dateNow);
-	console.log(aWeekAgo);
-	console.log(tasksByDate);
+	// console.log(dateNow);
+	// console.log(aWeekAgo);
+	// console.log(tasksByDate);
 
 	return tasksByDate.length;
 };
@@ -41,22 +41,25 @@ const calculateAssigneeBreakdown = (todos) => {
 	return assigneeBreakdown;
 };
 
-const Dashboard = ({ todos }) => {
+const Dashboard = ({ todos, isLoading }) => {
 	const statusBreakdown = calculateStatusBreakdown(todos);
 	const assigneeBreakdown = calculateAssigneeBreakdown(todos);
 	const createdInLastWeek = calculateRecentTasks(todos);
+	console.log("loading in dash", isLoading, Date.now());
+	const constantLoading = true;
 	return (
 		<div>
-			<h2>Dashboard</h2>
-			<p>{todos.length} total tasks</p>
+			<h2 aria-busy={isLoading ? "true" : "false"}>Dashboard</h2>
+			<p> {todos.length} total tasks</p>
 			<p>{createdInLastWeek} tasks created in last 7 days</p>
 			<hr />
-			<h3>Tasks by status</h3>
+			<h3 aria-busy={isLoading ? "true" : "false"}>Tasks by status</h3>
+			{isLoading && "<p>extra foo</p>"}
 			<p>To Do {statusBreakdown["To Do"]}</p>
 			<p>In Progress {statusBreakdown["In Progress"]}</p>
 			<p>Done {statusBreakdown.Done}</p>
 			<hr />
-			<h3>Tasks by assignee</h3>
+			<h3 aria-busy={isLoading ? "true" : "false"}>Tasks by assignee</h3>
 			{Object.keys(assigneeBreakdown).map((person) => {
 				return (
 					<p key={person}>
