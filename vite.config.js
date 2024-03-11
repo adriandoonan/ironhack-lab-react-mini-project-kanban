@@ -5,4 +5,7 @@ import react from "@vitejs/plugin-react-swc";
 export default defineConfig({
 	plugins: [react()],
 	//base: "/ironhack-lab-react-mini-project-kanban",
+	optimizeDeps: {
+		//exclude: ["@hello-pangea/dnd"],
+	},
 });
