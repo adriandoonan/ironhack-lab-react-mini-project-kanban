@@ -39,7 +39,7 @@ const grid = 8;
 const getListStyle = (isDraggingOver) => ({
 	background: isDraggingOver ? "lightblue" : "lightgrey",
 	padding: grid,
-	width: 250,
+	// width: 250,
 });
 
 const ListOfTodos = ({
