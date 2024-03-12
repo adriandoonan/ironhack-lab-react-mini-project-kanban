@@ -4,8 +4,8 @@ const Sidebar = () => {
 	const currentPage = useLocation();
 	//console.log(currentPage.pathname);
 	return (
-		<aside id="sidebar" data-theme="dark">
-			<nav id="sidebar-nav">
+		<aside id="sidebar">
+			<nav id="sidebar-nav" data-theme="dark">
 				<ul>
 					<NavLink to="/">
 						<li>Home </li>

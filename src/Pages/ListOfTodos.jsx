@@ -37,7 +37,7 @@ const notify = (message = "Here is your toast.", icon = "👏") => {
 const grid = 8;
 
 const getListStyle = (isDraggingOver) => ({
-	background: isDraggingOver ? "lightblue" : "lightgrey",
+	background: isDraggingOver ? "lightblue" : "var(--kanban-track-bg-color)",
 	padding: grid,
 	// width: 250,
 });
