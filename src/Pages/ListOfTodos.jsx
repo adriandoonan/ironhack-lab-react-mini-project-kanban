@@ -34,11 +34,11 @@ const ListOfTodos = ({
 	};
 
 	const handleDragStart = (event) => {
-		console.log("drag start", event);
+		//console.log("drag start", event);
 	};
 
 	const handleDragEnd = (event) => {
-		console.log("drag ended", event);
+		//console.log("drag ended", event);
 
 		const {
 			draggableId: todoItemToMove,
@@ -68,8 +68,9 @@ const ListOfTodos = ({
 			(task) => task.id === dropTarget.id,
 		);
 		tasksClone.splice(newSwapIndex, 0, tempItemToSplice);
-		console.log("after swap", tasksClone);
+
 		setTodoItems(tasksClone);
+		notify(`task moved to ${targetTodoStatus}`, "🤓");
 	};
 
 	const handleAddNewTodo = ({ event, newTodo }) => {
@@ -115,9 +116,7 @@ const ListOfTodos = ({
 											editTodo={handleEditExistingTodo}
 											setTodoToEdit={setTodoToEdit}
 											showEditForm={showEditForm}
-											parent="To Do"
 											index={index}
-											droppableId={todoItem.id}
 										/>
 									))}
 								{provided.placeholder}
@@ -147,7 +146,6 @@ const ListOfTodos = ({
 											editTodo={handleEditExistingTodo}
 											setTodoToEdit={setTodoToEdit}
 											showEditForm={showEditForm}
-											parent="In Progress"
 											index={index}
 										/>
 									))}
@@ -178,7 +176,6 @@ const ListOfTodos = ({
 											editTodo={handleEditExistingTodo}
 											setTodoToEdit={setTodoToEdit}
 											showEditForm={showEditForm}
-											parent="Done"
 											index={index}
 										/>
 									))}

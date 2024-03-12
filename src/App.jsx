@@ -17,7 +17,6 @@ import { useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 
 export const notify = (message = "Here is your toast.", icon = "👏") => {
-	console.log("someone asked for a message", message);
 	toast(message, {
 		duration: 4000,
 		position: "top-center",
