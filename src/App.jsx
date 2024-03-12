@@ -64,8 +64,8 @@ function App() {
 			//console.log("ext todo", externalTodos);
 
 			return fetchedTodos;
-		} catch {
-			console.log("error getting external todos");
+		} catch (error) {
+			console.log("error getting external todos", error);
 			setOfflineMode(true);
 		}
 	};
@@ -77,6 +77,7 @@ function App() {
 				`https://getpantry.cloud/apiv1/pantry/${pantryId}/basket/kanban-todos`,
 				{
 					method: "POST", // or 'PUT'
+
 					headers: {
 						"Content-Type": "application/json",
 					},
