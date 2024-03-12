@@ -16,12 +16,39 @@ import { useEffect, useState } from "react";
 
 import toast, { Toaster } from "react-hot-toast";
 
-const notify = () => toast("Here is your toast.");
+export const notify = (message = "Here is your toast.", icon = "👏") => {
+	console.log("someone asked for a message", message);
+	toast(message, {
+		duration: 4000,
+		position: "top-center",
+
+		// Styling
+		style: {},
+		className: "",
+
+		// Custom Icon
+		icon: icon,
+
+		// Change colors of success/error/loading icon
+		iconTheme: {
+			primary: "#000",
+			secondary: "#fff",
+		},
+
+		// Aria
+		ariaProps: {
+			role: "status",
+			"aria-live": "polite",
+		},
+	});
+};
 
 const pantryId = "03a06e51-b6b3-4f49-a584-22efe3180d55";
 
 function App() {
 	const [externalTodos, setExternalTodos] = useState([]);
+	const [tasks, setTasks] = useState({});
+
 	const [isLoading, setIsLoading] = useState(true);
 	let offlineMode = true;
 
@@ -35,6 +62,7 @@ function App() {
 			console.log("here is the parsed data", fetchedTodos.todos);
 			setExternalTodos([...fetchedTodos.todos]);
 			//console.log("ext todo", externalTodos);
+
 			return fetchedTodos;
 		} catch {
 			console.log("error getting external todos");
@@ -72,11 +100,12 @@ function App() {
 		if (offlineMode) {
 			setExternalTodos(todos.todos);
 			setIsLoading(false);
-			toast("using local todos", "✅");
+			notify("using local todos", "✅");
 			return;
 		}
-		getExternalTodos();
-		toast("got todos from server", "✅");
+		const externalTodos = getExternalTodos();
+
+		notify("got todos from server", "✅");
 		setTimeout(setIsLoading(false), 2000);
 	}, []);
 
@@ -84,7 +113,7 @@ function App() {
 		const updatedTodos = externalTodos.filter((todo) => todo.id !== id);
 		setExternalTodos(updatedTodos);
 		!offlineMode && updateExternalTodos(updatedTodos);
-		toast("todo deleted", "❌");
+		notify("todo deleted", "😵");
 	};
 
 	const [todoToEdit, setTodoToEdit] = useState("2");
@@ -107,7 +136,7 @@ function App() {
 		);
 		setExternalTodos(updatedTodos);
 		!offlineMode && updateExternalTodos(updatedTodos);
-		toast("todo edited", '"✅');
+		notify("todo edited", "✔️");
 	};
 
 	const showEditForm = () => {
@@ -117,6 +146,16 @@ function App() {
 		editForm.show();
 		textarea.style.height = `${textarea.scrollHeight}px`;
 	};
+
+	const groupedTodos = todos.todos.reduce((todosByStatus, todoItem) => {
+		if (!todosByStatus[todoItem.status]) {
+			todosByStatus[todoItem.status] = [];
+			todosByStatus[todoItem.status].push(todoItem);
+			return todosByStatus;
+		}
+		todosByStatus[todoItem.status].push(todoItem);
+		return todosByStatus;
+	}, {});
 
 	return (
 		<>
