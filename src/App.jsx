@@ -15,6 +15,7 @@ import Todo from "./Pages/Todo";
 import { useEffect, useState } from "react";
 
 import toast, { Toaster } from "react-hot-toast";
+import Presentation from "./Pages/Presentation";
 
 export const notify = (message = "Here is your toast.", icon = "👏") => {
 	toast(message, {
@@ -49,7 +50,7 @@ function App() {
 	const [tasks, setTasks] = useState({});
 
 	const [isLoading, setIsLoading] = useState(true);
-	let offlineMode = true;
+	const [offlineMode, setOfflineMode] = useState(true);
 
 	const getExternalTodos = async () => {
 		try {
@@ -65,7 +66,7 @@ function App() {
 			return fetchedTodos;
 		} catch {
 			console.log("error getting external todos");
-			offlineMode = true;
+			setOfflineMode(true);
 		}
 	};
 
@@ -91,7 +92,7 @@ function App() {
 			return responseTExt;
 		} catch (err) {
 			console.log("error posting external todos", err);
-			offlineMode = true;
+			setOfflineMode(true);
 		}
 	};
 
@@ -106,7 +107,7 @@ function App() {
 
 		notify("got todos from server", "✅");
 		setTimeout(setIsLoading(false), 2000);
-	}, []);
+	}, [offlineMode]);
 
 	const deleteTodo = (id) => {
 		const updatedTodos = externalTodos.filter((todo) => todo.id !== id);
@@ -145,16 +146,6 @@ function App() {
 		editForm.show();
 		textarea.style.height = `${textarea.scrollHeight}px`;
 	};
-
-	const groupedTodos = todos.todos.reduce((todosByStatus, todoItem) => {
-		if (!todosByStatus[todoItem.status]) {
-			todosByStatus[todoItem.status] = [];
-			todosByStatus[todoItem.status].push(todoItem);
-			return todosByStatus;
-		}
-		todosByStatus[todoItem.status].push(todoItem);
-		return todosByStatus;
-	}, {});
 
 	return (
 		<>
@@ -195,7 +186,7 @@ function App() {
 							element={
 								<ListOfTodos
 									todoItems={externalTodos}
-									updateExternalTodosFunc={updateExternalTodos}
+									updateExternalTodos={updateExternalTodos}
 									handleEditExistingTodo={handleEditExistingTodo}
 									handleSubmitEdit={handleSubmitEdit}
 									setTodoItems={setExternalTodos}
@@ -227,6 +218,8 @@ function App() {
 						/>
 
 						<Route path="/about" element={<About />} />
+
+						<Route path="/pres" element={<Presentation />} />
 
 						<Route path="*" element={<NotFound />} />
 					</Routes>

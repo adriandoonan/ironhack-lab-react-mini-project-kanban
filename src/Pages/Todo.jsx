@@ -31,7 +31,7 @@ const Todo = ({
 
 	console.log("the todos", todoItems);
 	return (
-		<div>
+		<div className="todo-item-detail-view">
 			<TodoItemDetailView
 				todoItem={todoItems.find((todo) => todo.id === todoId)}
 				setTodoToEdit={setTodoToEdit}

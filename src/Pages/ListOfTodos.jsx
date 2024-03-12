@@ -13,7 +13,7 @@ const getListStyle = (isDraggingOver) => ({
 
 const ListOfTodos = ({
 	todoItems,
-	updateExternalTodosFunc,
+	updateExternalTodos,
 	handleEditExistingTodo,
 	handleSubmitEdit,
 	setTodoItems,
@@ -22,6 +22,7 @@ const ListOfTodos = ({
 	todoToEdit,
 	showEditForm,
 	offlineMode,
+	up,
 }) => {
 	const initialState = {
 		title: "",
@@ -71,6 +72,9 @@ const ListOfTodos = ({
 
 		setTodoItems(tasksClone);
 		notify(`task moved to ${targetTodoStatus}`, "🤓");
+		if (!offlineMode) {
+			updateExternalTodos(tasksClone);
+		}
 	};
 
 	const handleAddNewTodo = ({ event, newTodo }) => {
