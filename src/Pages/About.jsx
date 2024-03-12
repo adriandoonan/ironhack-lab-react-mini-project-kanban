@@ -1,7 +1,14 @@
+import { Link } from "react-router-dom";
+
 const About = () => {
 	return (
 		<article
-			style={{ alignSelf: "center", justifySelf: "center", maxWidth: "500px" }}
+			style={{
+				position: "relative",
+				top: "25%",
+				maxWidth: "500px",
+				margin: "2rem",
+			}}
 		>
 			<h1>This is our about page</h1>
 			<p>Here is some information about us:</p>
@@ -19,6 +26,15 @@ const About = () => {
 				</a>{" "}
 				and find out more about the next classes!
 			</p>
+			<Link
+				to="/pres"
+				style={{
+					color: "var(--pico-background-color)",
+					textDecoration: "none",
+				}}
+			>
+				see the pres
+			</Link>
 		</article>
 	);
 };
