@@ -11,6 +11,8 @@
  --kanban-track-bg-color: lightgrey;
  --kanban-track-text-color: black;
  --sidebar-bg-color: #e0e0e0;
+ --kanban-todo-item-dragging-bg-color: lightgreen;
+ --kanban-todo-item-dragging-text-color: black;
 }
 
 /* Dark color scheme (Auto) */
@@ -20,6 +22,7 @@
     --kanban-track-bg-color: #444;
     --kanban-track-text-color: #fff;
     --sidebar-bg-color: #1c1c1c;
+    --kanban-todo-item-dragging-bg-color: rgb(73, 73, 73);
   }
 }
 
@@ -29,6 +32,7 @@
   --kanban-track-bg-color: #444;
   --kanban-track-text-color: #fff;
   --sidebar-bg-color: #1c1c1c;
+  --kanban-todo-item-dragging-bg-color: rgb(73, 73, 73);
 }
 
 
@@ -45,6 +49,11 @@
 .button-danger {
     background-color: rgb(156, 53, 53);
     border: rgb(156, 53, 53);
+
+    &:hover {
+      background-color: rgb(179, 79, 79);
+    border: rgb(179, 79, 79);
+    }
 }
 
 .todo-item-form-button-container {
@@ -95,7 +104,7 @@ body {
   margin: 0;
   min-width: 100vw;
   min-height: 100vh;
-  background-color: deeppink;
+  // background-color: deeppink;
 }
 
 #root {
@@ -113,7 +122,7 @@ header#main-header {
   max-height: 4rem;
   position: sticky;
   top: 0;
-  background-color: blueviolet;
+  // background-color: blueviolet;
   width: 100%;
   z-index: 420;
   

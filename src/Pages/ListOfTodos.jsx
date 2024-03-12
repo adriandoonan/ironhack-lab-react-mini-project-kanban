@@ -1,45 +1,14 @@
 import NewTodoItemForm from "../Components/forms/NewTodoItemForm";
 import EditTodoItemForm from "../Components/forms/EditTodoItemForm";
 import TodoItemCard from "../Components/todos/TodoItemCard";
-import { useState } from "react";
-
-import toast from "react-hot-toast";
-
+import { notify } from "../App";
 import { Droppable, DragDropContext } from "@hello-pangea/dnd";
-
-const notify = (message = "Here is your toast.", icon = "👏") => {
-	console.log("someone asked for a message", message);
-	toast(message, {
-		duration: 4000,
-		position: "top-center",
-
-		// Styling
-		style: {},
-		className: "",
-
-		// Custom Icon
-		icon: icon,
-
-		// Change colors of success/error/loading icon
-		iconTheme: {
-			primary: "#000",
-			secondary: "#fff",
-		},
-
-		// Aria
-		ariaProps: {
-			role: "status",
-			"aria-live": "polite",
-		},
-	});
-};
 
 const grid = 8;
 
 const getListStyle = (isDraggingOver) => ({
 	background: isDraggingOver ? "lightblue" : "var(--kanban-track-bg-color)",
 	padding: grid,
-	// width: 250,
 });
 
 const ListOfTodos = ({
@@ -65,33 +34,42 @@ const ListOfTodos = ({
 	};
 
 	const handleDragStart = (event) => {
-		// const { active } = event;
-		// const { id } = active;
 		console.log("drag start", event);
-
-		//setActiveId(id);
-	};
-
-	const handleDragOver = (event) => {
-		console.log("drag over", event);
 	};
 
 	const handleDragEnd = (event) => {
 		console.log("drag ended", event);
-		// const { active, over } = event;
-		// if (active.id === over.id) {
-		// 	return;
-		// }
-		// const tasksClone = [...todoItems];
-		// const oldIndex = tasksClone.findIndex((task) => task.id === active.id);
-		// const newIndex = tasksClone.findIndex((task) => task.id === over.id);
 
-		// tasksClone[oldIndex].status = tasksClone[newIndex].status;
+		const {
+			draggableId: todoItemToMove,
+			destination: { droppableId: targetTodoStatus, index: targetTodoIndex },
+		} = event;
 
-		// const swappedTasksClone = arrayMove(tasksClone, oldIndex, newIndex);
+		const dropTarget =
+			todoItems.filter((task) => task.status === targetTodoStatus)[
+				targetTodoIndex
+			] || -1;
 
-		// setTodoItems([...swappedTasksClone]);
-		// console.log(swappedTasksClone);
+		const targetTaskIndex = todoItems.findIndex(
+			(task) => task.id === dropTarget.id,
+		);
+		const draggedTaskIndex = todoItems.findIndex(
+			(task) => task.id === todoItemToMove,
+		);
+
+		if (draggedTaskIndex === targetTaskIndex) {
+			console.log("dropped back in same place");
+			return;
+		}
+		const tasksClone = [...todoItems];
+		const tempItemToSplice = { ...tasksClone.splice(draggedTaskIndex, 1)[0] };
+		tempItemToSplice.status = targetTodoStatus;
+		const newSwapIndex = tasksClone.findIndex(
+			(task) => task.id === dropTarget.id,
+		);
+		tasksClone.splice(newSwapIndex, 0, tempItemToSplice);
+		console.log("after swap", tasksClone);
+		setTodoItems(tasksClone);
 	};
 
 	const handleAddNewTodo = ({ event, newTodo }) => {
@@ -107,17 +85,12 @@ const ListOfTodos = ({
 		return <h2 aria-busy="true">Loading</h2>;
 	}
 
-	const groupedTodos =
-		todoItems.length &&
-		Map.groupBy(todoItems, (todoItem) => todoItem.status || "no status!");
-
 	return (
 		<>
 			<section className="list-of-todos grid">
 				<DragDropContext
 					onDragEnd={handleDragEnd}
 					onDragStart={handleDragStart}
-					isDraggingOver={handleDragOver}
 				>
 					<Droppable key="To Do" droppableId="To Do">
 						{(provided, snapshot) => (
@@ -132,18 +105,21 @@ const ListOfTodos = ({
 								<span className="kanban-track-title">
 									<p>To Do</p>
 								</span>
-								{groupedTodos.get("To Do").map((todoItem, index) => (
-									<TodoItemCard
-										{...todoItem}
-										key={todoItem.id}
-										deleteTodo={deleteTodo}
-										editTodo={handleEditExistingTodo}
-										setTodoToEdit={setTodoToEdit}
-										showEditForm={showEditForm}
-										parent="To Do"
-										index={index}
-									/>
-								))}
+								{todoItems
+									.filter((todo) => todo.status === "To Do")
+									.map((todoItem, index) => (
+										<TodoItemCard
+											{...todoItem}
+											key={todoItem.id}
+											deleteTodo={deleteTodo}
+											editTodo={handleEditExistingTodo}
+											setTodoToEdit={setTodoToEdit}
+											showEditForm={showEditForm}
+											parent="To Do"
+											index={index}
+											droppableId={todoItem.id}
+										/>
+									))}
 								{provided.placeholder}
 							</section>
 						)}
@@ -161,18 +137,20 @@ const ListOfTodos = ({
 								<span className="kanban-track-title">
 									<p>In Progress</p>
 								</span>
-								{groupedTodos.get("In Progress").map((todoItem, index) => (
-									<TodoItemCard
-										{...todoItem}
-										key={todoItem.id}
-										deleteTodo={deleteTodo}
-										editTodo={handleEditExistingTodo}
-										setTodoToEdit={setTodoToEdit}
-										showEditForm={showEditForm}
-										parent="In Progress"
-										index={index}
-									/>
-								))}
+								{todoItems
+									.filter((todo) => todo.status === "In Progress")
+									.map((todoItem, index) => (
+										<TodoItemCard
+											{...todoItem}
+											key={todoItem.id}
+											deleteTodo={deleteTodo}
+											editTodo={handleEditExistingTodo}
+											setTodoToEdit={setTodoToEdit}
+											showEditForm={showEditForm}
+											parent="In Progress"
+											index={index}
+										/>
+									))}
 								{provided.placeholder}
 							</section>
 						)}
@@ -190,18 +168,20 @@ const ListOfTodos = ({
 								<span className="kanban-track-title">
 									<p>Done</p>
 								</span>
-								{groupedTodos.get("Done").map((todoItem, index) => (
-									<TodoItemCard
-										{...todoItem}
-										key={todoItem.id}
-										deleteTodo={deleteTodo}
-										editTodo={handleEditExistingTodo}
-										setTodoToEdit={setTodoToEdit}
-										showEditForm={showEditForm}
-										parent="Done"
-										index={index}
-									/>
-								))}
+								{todoItems
+									.filter((todo) => todo.status === "Done")
+									.map((todoItem, index) => (
+										<TodoItemCard
+											{...todoItem}
+											key={todoItem.id}
+											deleteTodo={deleteTodo}
+											editTodo={handleEditExistingTodo}
+											setTodoToEdit={setTodoToEdit}
+											showEditForm={showEditForm}
+											parent="Done"
+											index={index}
+										/>
+									))}
 								{provided.placeholder}
 							</section>
 						)}
