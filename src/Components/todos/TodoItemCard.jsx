@@ -39,7 +39,7 @@ const TodoItemCard = ({
 	dueDate,
 	deleteTodo,
 	editTodo,
-	parent,
+
 	index,
 }) => {
 	const prioritySVGs = {
