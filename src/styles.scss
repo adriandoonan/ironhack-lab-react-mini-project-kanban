@@ -13,6 +13,7 @@
  --sidebar-bg-color: #e0e0e0;
  --kanban-todo-item-dragging-bg-color: lightgreen;
  --kanban-todo-item-dragging-text-color: black;
+  --slight-hint-background-color: #f6f6f685;
 }
 
 /* Dark color scheme (Auto) */
@@ -23,6 +24,7 @@
     --kanban-track-text-color: #fff;
     --sidebar-bg-color: #1c1c1c;
     --kanban-todo-item-dragging-bg-color: rgb(73, 73, 73);
+    --slight-hint-background-color: #0000001a;
   }
 }
 
@@ -33,6 +35,7 @@
   --kanban-track-text-color: #fff;
   --sidebar-bg-color: #1c1c1c;
   --kanban-todo-item-dragging-bg-color: rgb(73, 73, 73);
+  --slight-hint-background-color: #0000001a;
 }
 
 
@@ -262,15 +265,6 @@ aside#sidebar {
       }
     }
   }
-  
-  .todo-item-button-group {
-    display: flex;
-    justify-content: space-between;
-    padding-top: 1rem;
-    & > button {
-        margin: 1rem 0 0 0 ;
-    }
-  }
 
 }
 
@@ -302,6 +296,32 @@ article.todo-item-card {
   }
 }
 
+.todo-item-detail-view {
+
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 2rem;
+  background-color: var(--slight-hint-background-color);
+  max-width: 750px;
+
+  .todo-item-button-group {
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem 0;
+    & > button {
+        margin: 1rem 0 0 0 ;
+    }
+  }
+
+  .todo-item-detail-view-info {
+    margin-left: auto;
+    padding: 4rem 0;
+  }
+
+
+}
+
 footer#main-footer {
   margin-top: auto;
   background-color: cornflowerblue;
@@ -322,3 +342,6 @@ footer#main-footer {
   }
 }
 
+.slides {
+  background-color: #1c1c1c;
+}
