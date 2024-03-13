@@ -82,7 +82,7 @@ const ListOfTodos = ({
 		newTodo.id = crypto.randomUUID();
 		const updatedTodos = [...todoItems, newTodo];
 		setTodoItems(updatedTodos);
-		!offlineMode && updateExternalTodosFunc(updatedTodos);
+		!offlineMode && updateExternalTodos(updatedTodos);
 		notify("new todo created", "✅");
 	};
 

@@ -4,7 +4,7 @@ import Sidebar from "./Components/navigation/Sidebar";
 import Navbar from "./Components/navigation/Navbar";
 import coolLogo from "./assets/cool-logo.png";
 
-import todos from "./todos-11-mar.json";
+import todos from "./todos-13-mar.json";
 
 import { Route, Routes } from "react-router-dom";
 import ListOfTodos from "./Pages/ListOfTodos";
@@ -47,7 +47,6 @@ const pantryId = "03a06e51-b6b3-4f49-a584-22efe3180d55";
 
 function App() {
 	const [externalTodos, setExternalTodos] = useState([]);
-	const [tasks, setTasks] = useState({});
 
 	const [isLoading, setIsLoading] = useState(true);
 	const [offlineMode, setOfflineMode] = useState(true);
@@ -104,7 +103,7 @@ function App() {
 			notify("using local todos", "✅");
 			return;
 		}
-		const externalTodos = getExternalTodos();
+		getExternalTodos();
 
 		notify("got todos from server", "✅");
 		setTimeout(setIsLoading(false), 2000);
