@@ -50,7 +50,7 @@ function App() {
 	const [tasks, setTasks] = useState({});
 
 	const [isLoading, setIsLoading] = useState(true);
-	const [offlineMode, setOfflineMode] = useState(true);
+	const [offlineMode, setOfflineMode] = useState(false);
 
 	const getExternalTodos = async () => {
 		try {
