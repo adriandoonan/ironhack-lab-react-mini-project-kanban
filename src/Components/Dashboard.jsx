@@ -48,7 +48,14 @@ const Dashboard = ({ todos, isLoading }) => {
 	console.log("loading in dash", isLoading, Date.now());
 	const constantLoading = true;
 	return (
-		<div>
+		<article
+			style={{
+				position: "relative",
+				padding: "2rem",
+				maxWidth: "600px",
+				margin: "2rem",
+			}}
+		>
 			<h2 aria-busy={isLoading ? "true" : "false"}>Dashboard</h2>
 			<p> {todos.length} total tasks</p>
 			<p>{createdInLastWeek} tasks created in last 7 days</p>
@@ -67,7 +74,7 @@ const Dashboard = ({ todos, isLoading }) => {
 					</p>
 				);
 			})}
-		</div>
+		</article>
 	);
 };
 export default Dashboard;

@@ -5,9 +5,10 @@ const About = () => {
 		<article
 			style={{
 				position: "relative",
-				top: "25%",
+				top: "20%",
 				maxWidth: "500px",
 				margin: "2rem",
+				padding: "1rem",
 			}}
 		>
 			<h1>This is our about page</h1>
@@ -15,8 +16,8 @@ const About = () => {
 
 			<p>We Are Students At IronHack And Doing a Web Development Course 🤓</p>
 			<p>
-				If you think you want to learn how to hack something like this together,
-				why not visit the{" "}
+				If you want to learn how to hack something like this together, why not
+				visit the{" "}
 				<a
 					href="https://www.ironhack.com/de-en"
 					rel="noreferrer"
