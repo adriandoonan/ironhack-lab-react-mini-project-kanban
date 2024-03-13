@@ -276,6 +276,9 @@ article.todo-item-card {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    svg {
+      flex-shrink: 0;
+    }
   }
   > p {
     font-size: 0.8rem;
