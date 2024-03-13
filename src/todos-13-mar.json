@@ -1,0 +1,326 @@
+{
+	"todos": [
+		{
+			"id": "1",
+			"title": "Github repository",
+			"description": "A github repository should be created to house the project and team members should have access",
+			"assignee": "adrian",
+			"status": "Done",
+			"priority": "Medium",
+			"createdDate": "2024-03-04",
+			"dueDate": "2024-03-13"
+		},
+		{
+			"id": "1a",
+			"title": "Single User SPA",
+			"description": "It should be an app made for a single user.\n\nI don't know what we should do about the routing in GitHub pages, maybe add the .htaccess file",
+			"assignee": "",
+			"status": "In Progress",
+			"priority": "Medium",
+			"createdDate": "2024-03-04",
+			"dueDate": "2024-03-13"
+		},
+		{
+			"id": "2a",
+			"title": "Items List",
+			"description": "A list of items showing the JSON data.",
+			"assignee": "adrian",
+			"status": "Done",
+			"priority": "Medium",
+			"createdDate": "2024-03-05",
+			"dueDate": "2024-03-13"
+		},
+		{
+			"id": "2c",
+			"title": "Delete Items (after confirmation)",
+			"description": "A button on each list item that allows the user to delete the item from the list.\n\nWe have the button on the list but need to add it to the details page as well.\n\nWe also need to be able to have a confirmation dialog for deletion, right now it is just straight deleted and there is no undo.",
+			"assignee": "adrian",
+			"status": "In Progress",
+			"priority": "Medium",
+			"createdDate": "2024-03-05",
+			"dueDate": "2024-03-13"
+		},
+		{
+			"id": "3a",
+			"title": "Dashboard Page",
+			"description": "A page showing some stats about the items in the board that can act as a 'home page' for the user of the project.",
+			"assignee": "adrian",
+			"status": "In Progress",
+			"priority": "Medium",
+			"createdDate": "2024-03-06",
+			"dueDate": "2024-03-13"
+		},
+		{
+			"id": "3b",
+			"title": "Item Details Page",
+			"description": "A page showing the details of the selected item from the list of items.",
+			"assignee": "adrian",
+			"status": "In Progress",
+			"priority": "Medium",
+			"createdDate": "2024-03-06",
+			"dueDate": "2024-03-13"
+		},
+		{
+			"id": "3d",
+			"title": "Not Found Page",
+			"description": "A page shown whenever the user navigates to a URL route that doesn’t exist in the app.",
+			"assignee": "",
+			"status": "To Do",
+			"priority": "Medium",
+			"createdDate": "2024-03-06",
+			"dueDate": "2024-03-13"
+		},
+		{
+			"id": "4a",
+			"title": "Create Item Form",
+			"description": "A form that allows the user to create a new item and add it to the items list.",
+			"assignee": "adrian",
+			"status": "In Progress",
+			"priority": "Medium",
+			"createdDate": "2024-03-07",
+			"dueDate": "2024-03-13"
+		},
+		{
+			"id": "4b",
+			"title": "Update Item Form",
+			"description": "A form that allows the user to update an existing item on the list.",
+			"assignee": "adrian",
+			"status": "In Progress",
+			"priority": "Medium",
+			"createdDate": "2024-03-07",
+			"dueDate": "2024-03-13"
+		},
+		{
+			"id": "5b",
+			"title": "Drag and drop support",
+			"description": "A user should be able to drag one item from a kanban track to another and, in doing so, change the status of that item to match the status of the track they dropped it into.\n\nMaybe check this post https://rootstack.com/en/blog/how-do-i-use-drag-and-drop-react\n\nAnd this looks like a simple implementation that can be built on https://medium.com/nerd-for-tech/simple-drag-and-drop-in-react\n\nwe need to also support mobile, maybe look here https://phuoc.ng/collection/react-drag-drop/make-an-element-draggable-on-touchscreen-devices/\n\nThis also looks interesting, should check if it works for mobile, seems more like the alpine solution https://www.smashingmagazine.com/2020/02/html-drag-drop-api-react/",
+			"assignee": "adrian",
+			"status": "In Progress",
+			"priority": "Medium",
+			"createdDate": "2024-03-08",
+			"dueDate": "2024-03-13"
+		},
+		{
+			"id": "6a",
+			"title": "Presentation",
+			"description": "A presentation about the creation of the project including minimal information on the people who created it.\nLet's use reveal js again so we don't have to worry about formatting ",
+			"assignee": "adrian",
+			"status": "Done",
+			"priority": "Medium",
+			"createdDate": "2024-03-11",
+			"dueDate": "2024-03-13"
+		},
+		{
+			"id": "6b",
+			"title": "Styling",
+			"description": "Make app look good and all that.",
+			"assignee": "",
+			"status": "To Do",
+			"priority": "Medium",
+			"createdDate": "2024-03-11",
+			"dueDate": "2024-03-13"
+		},
+		{
+			"id": "7a",
+			"title": "code cleanup",
+			"description": "Keep your code clean and organized by using descriptive variable names, correct indentation, removing any unused code, and maintaining proper file structure and naming. Remember to also remove any console logs",
+			"assignee": "",
+			"status": "To Do",
+			"priority": "Medium",
+			"createdDate": "2024-03-12",
+			"dueDate": "2024-03-13"
+		},
+		{
+			"id": "aeb98c7f-fe82-45f4-9d58-51ce8d5a2bb8",
+			"title": "Use reducer",
+			"description": "Change some places where there a lot state variables defined to use usereducer",
+			"assignee": "",
+			"status": "To Do",
+			"priority": "Low",
+			"createdDate": "2024-03-09",
+			"createdTimestamp": "2024-03-08T23:19:08.226Z",
+			"dueDate": "2024-03-13"
+		},
+		{
+			"id": "1066b8a9-5d49-4b44-8632-3e61e4bbf676",
+			"title": "Fix some responsive errors",
+			"description": "The action bar should be sticky so a user can add a Todo without scrolling all the way up, we could try stacking the header as well so there is some kind of roll up effect when a user scrolls down and up again, \n\nadditionally the text area should grow as a user types so that they can see the whole text of the Todo they are about to add, this should get smaller as well when the next item is opened for editing as it may have less text\n\nadditionally, the cards have a problem at the bottom with the area with the assignee and buttons not stretching to the full width \n\nadditionally, there is a border on the bottom of the page, this is especially visible in the Todo item details view\n\nadditionally, there is still some margin on the right hand side, this is visible eg, when viewing the task list on mobile \n\nadditionally there is an issue with the navbar covering the cool jerks company name bit, this should be hidden at a larger screen size, the previous one didn't include the add Todo button so we should get a new max width for that ",
+			"assignee": "adrian",
+			"status": "To Do",
+			"priority": "Medium",
+			"createdDate": "2024-03-09",
+			"createdTimestamp": "2024-03-09T18:05:16.144Z",
+			"dueDate": "2024-03-09"
+		},
+		{
+			"id": "af7cfe08-19af-4428-b144-c47a8b8c227f",
+			"title": "Archive todos",
+			"description": "Once a lot of todos are done the done list will get quite cluttered. A user should be able to archive a Todo and todos that are done and older than a given date should also be archived, the archive could be another field in the pantry object we are using to hold the todos. If a user selects 'show archived tasks' we can grab this and con at with the main list of todos. \n\nWe would need to update the uploader functions to handle this, for example, moving a task from done to archived or the other way round and moving tasks to the archive automatically (probably on download or on next sync?) when they are older than, say, seven days",
+			"assignee": "",
+			"status": "To Do",
+			"priority": "Low",
+			"createdDate": "2024-03-09",
+			"createdTimestamp": "2024-03-09T18:05:16.144Z",
+			"dueDate": "2024-03-13"
+		},
+		{
+			"id": "a-test-task-for-dates",
+			"title": "you can delete this task",
+			"description": "Once a lot of todos are done the done list will get quite cluttered. A user should be able to archive a Todo and todos that are done and older than a given date should also be archived, the archive could be another field in the pantry object we are using to hold the todos. If a user selects 'show archived tasks' we can grab this and con at with the main list of todos. \n\nWe would need to update the uploader functions to handle this, for example, moving a task from done to archived or the other way round and moving tasks to the archive automatically (probably on download or on next sync?) when they are older than, say, seven days",
+			"assignee": "",
+			"status": "To Do",
+			"priority": "Low",
+			"createdDate": "2024-02-09",
+			"createdTimestamp": "2024-02-09T18:05:16.144Z",
+			"dueDate": "2024-03-13"
+		},
+		{
+			"id": "c0f986b0-604b-4c85-9902-efae317ccf28",
+			"title": "Add that web app manifest stuff",
+			"description": "Should add all the web app manifest stuff to make it installable ",
+			"assignee": "",
+			"status": "To Do",
+			"priority": "Low",
+			"createdDate": "2024-03-10",
+			"createdTimestamp": "2024-03-10T19:06:30.155Z",
+			"dueDate": "2024-03-13"
+		},
+		{
+			"id": "1b",
+			"title": "Navbar",
+			"description": "A component that displays the name and the logo of the app, shown on all the pages.\n\nnavbar should be responsive so the menu items are still accessible on smaller screens",
+			"assignee": "adrian",
+			"status": "Done",
+			"priority": "High",
+			"createdDate": "2024-03-04",
+			"dueDate": "2024-03-13"
+		},
+		{
+			"id": "2b",
+			"title": "Conditional Rendering",
+			"description": "Conditionally render content using boolean properties from the project’s JSON data.",
+			"assignee": "adrian",
+			"status": "Done",
+			"priority": "Medium",
+			"createdDate": "2024-03-05",
+			"dueDate": "2024-03-13"
+		},
+		{
+			"id": "3c",
+			"title": "About Page",
+			"description": "A page showing the project description and information about the team members (students) working on the project, including links to their GitHub and LinkedIn profiles.\n\nthis would be an easy one as it is mostly just css and hwhatnot",
+			"assignee": "amjad",
+			"status": "Done",
+			"priority": "Medium",
+			"createdDate": "2024-03-06",
+			"dueDate": "2024-03-13"
+		},
+		{
+			"id": "1c",
+			"title": "Footer",
+			"description": "A component that displays a link to the GitHub repo of the project, shown on all the pages.",
+			"assignee": "adrian",
+			"priority": "Medium",
+			"status": "Done",
+			"createdDate": "2024-03-04",
+			"dueDate": "2024-03-13"
+		},
+		{
+			"id": "1d",
+			"title": "Sidebar",
+			"description": "A sidebar component shown on all the pages. The component should display links to pages added to the app at a later stage.",
+			"assignee": "adrian",
+			"status": "Done",
+			"priority": "Medium",
+			"createdDate": "2024-03-04",
+			"dueDate": "2024-03-13"
+		},
+		{
+			"id": "42c5dc1d-ac62-4531-a51f-ad6bfa982dd6",
+			"title": "Make emoji accessible ",
+			"description": "Make the emoji being used to show created, assigned and due date accessible by adding aria labels and change the date to be 'natural language ' like a day ago, last week, last month etc and have a tooltip to display the actual date like GitHub dpes",
+			"assignee": "adrian",
+			"status": "Done",
+			"priority": "Medium",
+			"createdDate": "2024-03-10",
+			"createdTimestamp": "2024-03-10T10:00:13.357Z",
+			"dueDate": "2024-03-13"
+		},
+		{
+			"id": "5a",
+			"title": "Online storage",
+			"description": "Add feature to save state of todos to external service. \n\nUse pantry with ID 03a06e51-b6b3-4f49-a584-22efe3180d55.",
+			"assignee": "adrian",
+			"status": "Done",
+			"priority": "Medium",
+			"createdDate": "2024-03-08",
+			"dueDate": "2024-03-13"
+		},
+		{
+			"id": "2711ac55-5de4-461f-bd0b-8390bcc2kbab",
+			"title": "Truncate the description on task list view",
+			"description": "Only show the first paragraph in the list view and save the rest to show on the details view of a task with proper formatting ",
+			"assignee": "adrian",
+			"status": "Done",
+			"priority": "Medium",
+			"createdDate": "2024-03-08",
+			"createdTimestamp": "2024-03-08T17:38:19.681Z",
+			"dueDate": "2024-03-13"
+		},
+		{
+			"id": "5afa0777-f797-4990-85fd-8a3e02644f79",
+			"title": "fix unhandled error when todo/:id goes to a non-existent id",
+			"description": "right now, if you try and go to a todo detail page for a bad todo id, there is some kind of crash and stacktrace, this should be fixed to handle those cases gracefully",
+			"assignee": "adrian",
+			"status": "Done",
+			"priority": "High",
+			"createdDate": "2024-03-11",
+			"createdTimestamp": "2024-03-11T10:14:09.225Z",
+			"dueDate": "2024-03-13"
+		},
+		{
+			"id": "aece7c6a-8db4-42c6-9554-efb212f39164",
+			"title": "don't generate an id for a todo until it is being saved",
+			"description": "right now we are generating ids on creation of the form, in some cases it appears that this can lead to duplicate ids for different todos",
+			"assignee": "adrian",
+			"status": "Done",
+			"priority": "High",
+			"createdDate": "2024-03-09",
+			"createdTimestamp": "2024-03-09T09:58:05.784Z",
+			"dueDate": "2024-03-13"
+		},
+		{
+			"id": "2711ac55-5de4-461f-bd0b-8390bcc2fbab",
+			"title": "Scroll the tracks",
+			"description": "Right now on mobile the tracks are as columns, they should scroll and ideally use scrolls so so that you don't end up with half columns in the view\n\nThis is fucked somehow since dragging was introduced and you can't scroll anymore if the touch starts on a card, you have to use the gutters, which is fiddly and not ideal",
+			"assignee": "adrian",
+			"status": "Done",
+			"priority": "Medium",
+			"createdDate": "2024-03-08",
+			"createdTimestamp": "2024-03-08T17:38:19.681Z",
+			"dueDate": "2024-03-13"
+		},
+		{
+			"id": "87385218-c9db-4562-b617-691e77f6cc88",
+			"title": "filter tasks",
+			"description": "It is hard to find a given task when there are so many on the page, we should add a filter that will narrow the list to only tasks where the title matches a given search string",
+			"assignee": "",
+			"status": "To Do",
+			"priority": "Low",
+			"createdDate": "2024-03-12",
+			"createdTimestamp": "2024-03-12T09:34:59.185Z",
+			"dueDate": "2024-03-13"
+		},
+		{
+			"id": "1ea879aa-c425-4b16-8cd1-cd84dde1a081",
+			"title": "collapse done tasks",
+			"description": "done tasks can start to take up a lot of height if they are not archived, it might be nice if they were collapsed to just the header by default and you had to click to open them like an accordian, maybe we can use details + summary for this?",
+			"assignee": "",
+			"status": "To Do",
+			"priority": "Low",
+			"createdDate": "2024-03-13",
+			"createdTimestamp": "2024-03-13T07:50:07.078Z",
+			"dueDate": "2024-03-13"
+		}
+	]
+}
